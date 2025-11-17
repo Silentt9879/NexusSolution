@@ -4,12 +4,15 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
-// 👇 THIS IS THE CHANGE
-// We're pointing to the 'public' folder, and 'process.env.PUBLIC_URL' makes it work live.
+// --- 1. IMPORT THE TRANSLATION HOOK ---
+import { useTranslation } from 'react-i18next';
+
 const videoURL = process.env.PUBLIC_URL + "/videos/stockvideo.mp4";
-// This will become "/NexusSolution/videos/stockvideo.mp4" on your live site.
 
 function Hero() {
+  // --- 2. GET THE 't' (TRANSLATE) FUNCTION ---
+  const { t } = useTranslation();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
@@ -20,46 +23,41 @@ function Hero() {
   };
 
   return (
-    // 1. The main container is now 'relative' to position the video inside it
     <div className="relative overflow-hidden
                     transition-colors duration-300 ease-in-out">
       
-      {/* 2. This is the background video */}
       <video
-        src={videoURL} // 👈 This now uses the correct URL
+        src={videoURL}
         autoPlay
         loop
         muted
-        playsInline // Important for iOS devices
+        playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
       
-      {/* 3. This is the dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/60 dark:bg-black/70 z-10" />
 
-      {/* 4. Your content now has a z-20 to sit on top of everything */}
       <motion.div
-        className="relative z-20 container mx-auto px-6 py-40 text-center" // Increased padding
+        className="relative z-20 container mx-auto px-6 py-40 text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         
-        {/* 5. Text is now white, and stays white in dark mode */}
         <motion.h1
           className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
           variants={itemVariants}
         >
-          Accelerate Your Digital Transformation
+          {/* --- 3. USE THE 't' FUNCTION --- */}
+          {t('hero_title')}
         </motion.h1>
 
-        {/* 5. Sub-text is now a light gray/blue */}
         <motion.p
           className="mt-4 text-lg md:text-xl text-blue-100 max-w-2xl mx-auto"
           variants={itemVariants}
         >
-          We build cutting-edge software solutions that drive growth, 
-          efficiency, and innovation for your business.
+          {/* --- 4. USE THE 't' FUNCTION --- */}
+          {t('hero_subtitle')}
         </motion.p>
 
         <motion.div
@@ -70,10 +68,10 @@ function Hero() {
           <Link to="/services" className="bg-blue-600 text-white px-8 py-3 
                                           rounded-lg text-lg font-medium 
                                           hover:bg-blue-700 transition duration-300">
-            Our Services
+            {/* --- 5. USE THE 't' FUNCTION --- */}
+            {t('hero_services_button')}
           </Link>
           
-          {/* 6. "Learn More" button is now styled to be transparent (a "ghost" button) */}
           <HashLink 
             smooth 
             to="/#services" 
@@ -81,7 +79,8 @@ function Hero() {
                        px-8 py-3 rounded-lg text-lg font-medium 
                        hover:bg-white hover:text-gray-900 transition duration-300"
           >
-            Learn More
+            {/* --- 6. USE THE 't' FUNCTION --- */}
+            {t('hero_learn_more_button')}
           </HashLink>
 
         </motion.div>
