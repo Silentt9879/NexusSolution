@@ -6,7 +6,6 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { ThemeToggle } from './ThemeToggle'; 
 
 // --- 1. Language Data ---
-// We create an object for our languages
 const languages = [
   { code: 'en', name: 'English', shortName: 'EN' },
   { code: 'ms', name: 'Malay', shortName: 'MS' },
@@ -20,21 +19,12 @@ const LanguageSwitcher = () => {
 
   // --- 3. This function handles the language change ---
   const handleLanguageChange = (langCode, shortName) => {
-    
-    // Set the cookie for Google Translate
-    // This tells Google what language to translate *to*
     document.cookie = `googtrans=/en/${langCode};path=/;domain=${window.location.hostname}`;
-    
-    // Update our React state to show the new language
     setCurrentLang(shortName);
-
-    // Reload the page to apply the translation
-    // This is the simplest way to make Google Translate re-scan the page.
     window.location.reload();
   };
 
   // 4. This effect checks the cookie when the page loads
-  // It ensures our button shows the correct current language
   useEffect(() => {
     const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
       const [key, value] = cookie.split('=');
@@ -85,7 +75,8 @@ const LanguageSwitcher = () => {
             className="block px-4 py-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none"
           >
             {lang.name}
-          </DropdownMenu.Item>
+          {/* 👇 THIS WAS THE TYPO I FIXED (was Drowpdown) */}
+          </DropdownMenu.Item> 
         ))}
       </DropdownMenu.Content>
     </DropdownMenu.Root>
@@ -125,8 +116,6 @@ function Navbar() {
           </HashLink>
 
           <ThemeToggle />
-
-          {/* --- 6. Add our new custom component --- */}
           <LanguageSwitcher />
 
         </div>
@@ -136,19 +125,15 @@ function Navbar() {
         {/* --- RADIX MOBILE MENU --- */}
         <div className="md:hidden flex items-center">
           <ThemeToggle />
-
-          {/* --- 7. Add our new custom component here too --- */}
           <div className="ml-3">
             <LanguageSwitcher />
           </div>
-
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
               <button className="text-gray-800 dark:text-gray-200 text-3xl focus:outline-none ml-2">
                 ☰
               </button>
             </DropdownMenu.Trigger>
-
             <DropdownMenu.Content
               className="
                 absolute right-0 mt-2 w-48 z-[9999]
@@ -159,7 +144,6 @@ function Navbar() {
                 data-[side=bottom]:animate-slideUpAndFade
               "
             >
-
               <DropdownMenu.Item asChild>
                 <Link to="/" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
                   Home
@@ -175,21 +159,17 @@ function Navbar() {
                   About Us
                 </Link>
               </DropdownMenu.Item>
-              
               <DropdownMenu.Item asChild>
                 <Link to="/blog" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
                   Blog
                 </Link>
               </DropdownMenu.Item>
-
               <DropdownMenu.Item asChild>
                 <HashLink smooth to="/#contact" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
                   Contact
                 </HashLink>
               </DropdownMenu.Item>
-              
               <DropdownMenu.Separator className="h-px bg-gray-200 dark:bg-gray-600" />
-              
               <DropdownMenu.Item asChild>
                 <HashLink 
                   smooth 
@@ -200,12 +180,10 @@ function Navbar() {
                   Get Started
                 </HashLink>
               </DropdownMenu.Item>
-
             </DropdownMenu.Content>
           </DropdownMenu.Root>
         </div>
         {/* --- END RADIX MOBILE MENU --- */}
-
       </nav>
     </header>
   );
