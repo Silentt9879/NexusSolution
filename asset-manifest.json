@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/NexusSolution/static/css/main.454ad73b.css",
+    "main.js": "/NexusSolution/static/js/main.acd71f53.js",
+    "static/js/297.2c8059fa.chunk.js": "/NexusSolution/static/js/297.2c8059fa.chunk.js",
+    "static/js/973.5f06caed.chunk.js": "/NexusSolution/static/js/973.5f06caed.chunk.js",
+    "static/js/195.9dcc1d42.chunk.js": "/NexusSolution/static/js/195.9dcc1d42.chunk.js",
+    "static/js/240.5379caed.chunk.js": "/NexusSolution/static/js/240.5379caed.chunk.js",
+    "static/js/485.f3bebe01.chunk.js": "/NexusSolution/static/js/485.f3bebe01.chunk.js",
+    "static/js/796.f6582bdc.chunk.js": "/NexusSolution/static/js/796.f6582bdc.chunk.js",
+    "static/js/165.f32cc9e7.chunk.js": "/NexusSolution/static/js/165.f32cc9e7.chunk.js",
+    "static/js/881.0365ac71.chunk.js": "/NexusSolution/static/js/881.0365ac71.chunk.js",
+    "static/js/446.d9a9d929.chunk.js": "/NexusSolution/static/js/446.d9a9d929.chunk.js",
+    "static/media/why-partner-image.jpg": "/NexusSolution/static/media/why-partner-image.bfbdd5a75bdd03a342b8.jpg",
+    "service-worker.js": "/NexusSolution/service-worker.js",
+    "index.html": "/NexusSolution/index.html",
+    "main.454ad73b.css.map": "/NexusSolution/static/css/main.454ad73b.css.map",
+    "main.acd71f53.js.map": "/NexusSolution/static/js/main.acd71f53.js.map",
+    "297.2c8059fa.chunk.js.map": "/NexusSolution/static/js/297.2c8059fa.chunk.js.map",
+    "973.5f06caed.chunk.js.map": "/NexusSolution/static/js/973.5f06caed.chunk.js.map",
+    "195.9dcc1d42.chunk.js.map": "/NexusSolution/static/js/195.9dcc1d42.chunk.js.map",
+    "240.5379caed.chunk.js.map": "/NexusSolution/static/js/240.5379caed.chunk.js.map",
+    "485.f3bebe01.chunk.js.map": "/NexusSolution/static/js/485.f3bebe01.chunk.js.map",
+    "796.f6582bdc.chunk.js.map": "/NexusSolution/static/js/796.f6582bdc.chunk.js.map",
+    "165.f32cc9e7.chunk.js.map": "/NexusSolution/static/js/165.f32cc9e7.chunk.js.map",
+    "881.0365ac71.chunk.js.map": "/NexusSolution/static/js/881.0365ac71.chunk.js.map",
+    "446.d9a9d929.chunk.js.map": "/NexusSolution/static/js/446.d9a9d929.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.454ad73b.css",
+    "static/js/main.acd71f53.js"
+  ]
+}
