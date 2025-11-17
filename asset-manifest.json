@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/NexusSolution/static/css/main.10695590.css",
-    "main.js": "/NexusSolution/static/js/main.f11dc690.js",
-    "static/js/297.c768c82b.chunk.js": "/NexusSolution/static/js/297.c768c82b.chunk.js",
+    "main.js": "/NexusSolution/static/js/main.f4bcb9e1.js",
+    "static/js/297.ba3b02b9.chunk.js": "/NexusSolution/static/js/297.ba3b02b9.chunk.js",
     "static/js/973.5f06caed.chunk.js": "/NexusSolution/static/js/973.5f06caed.chunk.js",
     "static/js/195.9dcc1d42.chunk.js": "/NexusSolution/static/js/195.9dcc1d42.chunk.js",
     "static/js/240.5379caed.chunk.js": "/NexusSolution/static/js/240.5379caed.chunk.js",
@@ -16,8 +16,8 @@
     "service-worker.js": "/NexusSolution/service-worker.js",
     "index.html": "/NexusSolution/index.html",
     "main.10695590.css.map": "/NexusSolution/static/css/main.10695590.css.map",
-    "main.f11dc690.js.map": "/NexusSolution/static/js/main.f11dc690.js.map",
-    "297.c768c82b.chunk.js.map": "/NexusSolution/static/js/297.c768c82b.chunk.js.map",
+    "main.f4bcb9e1.js.map": "/NexusSolution/static/js/main.f4bcb9e1.js.map",
+    "297.ba3b02b9.chunk.js.map": "/NexusSolution/static/js/297.ba3b02b9.chunk.js.map",
     "973.5f06caed.chunk.js.map": "/NexusSolution/static/js/973.5f06caed.chunk.js.map",
     "195.9dcc1d42.chunk.js.map": "/NexusSolution/static/js/195.9dcc1d42.chunk.js.map",
     "240.5379caed.chunk.js.map": "/NexusSolution/static/js/240.5379caed.chunk.js.map",
@@ -30,6 +30,6 @@
   },
   "entrypoints": [
     "static/css/main.10695590.css",
-    "static/js/main.f11dc690.js"
+    "static/js/main.f4bcb9e1.js"
   ]
 }
