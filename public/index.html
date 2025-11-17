@@ -15,7 +15,6 @@
 
     <!--
       START GOOGLE TRANSLATE CSS OVERRIDE
-      This style block will fix the "ugly white box"
     -->
     <style>
       /* This is the main <div> we added to Navbar.js */
@@ -91,11 +90,11 @@
         new google.translate.TranslateElement({
           pageLanguage: 'en',
           
-          // --- THIS IS THE NEW LINE ---
+          // --- THIS IS THE CRITICAL LINE ---
           // It limits the list to ONLY these 4 languages.
           // 'en' = English, 'ms' = Malay, 'zh-CN' = Mandarin (Simplified), 'ta' = Tamil
           includedLanguages: 'en,ms,zh-CN,ta',
-          // --- END OF NEW LINE ---
+          // --- END OF CRITICAL LINE ---
 
           layout: google.translate.TranslateElement.InlineLayout.SIMPLE
         }, 'google_translate_element');
