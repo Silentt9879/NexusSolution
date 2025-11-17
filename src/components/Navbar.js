@@ -38,6 +38,13 @@ function Navbar() {
           </HashLink>
 
           <ThemeToggle />
+
+          {/* START GOOGLE TRANSLATE PLACEHOLDER 
+            This div is targeted by the script in public/index.html
+          */}
+          <div id="google_translate_element" className="ml-4"></div>
+          {/* END GOOGLE TRANSLATE PLACEHOLDER */}
+
         </div>
         {/* --- End Desktop Navigation --- */}
 
@@ -53,15 +60,15 @@ function Navbar() {
             </DropdownMenu.Trigger>
 
             <DropdownMenu.Content
-  className="
-    absolute right-0 mt-2 w-48 z-[9999]
-    bg-white shadow-md rounded-md
-    dark:bg-gray-800 dark:border-gray-700
-    border border-gray-200
-    data-[side=top]:animate-slideDownAndFade
-    data-[side=bottom]:animate-slideUpAndFade
-  "
->
+              className="
+                absolute right-0 mt-2 w-48 z-[9999]
+                bg-white shadow-md rounded-md
+                dark:bg-gray-800 dark:border-gray-700
+                border border-gray-200
+                data-[side=top]:animate-slideDownAndFade
+                data-[side=bottom]:animate-slideUpAndFade
+              "
+            >
 
               <DropdownMenu.Item asChild>
                 <Link to="/" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
@@ -98,7 +105,7 @@ function Navbar() {
                   smooth 
                   to="/#contact" 
                   className="block px-6 py-4 bg-blue-600 text-white text-center font-medium 
-                             hover:bg-blue-700 cursor-pointer outline-none"
+                               hover:bg-blue-700 cursor-pointer outline-none"
                 >
                   Get Started
                 </HashLink>
