@@ -15,8 +15,7 @@
 
     <!--
       START GOOGLE TRANSLATE CSS OVERRIDE
-      This block HIDES all of Google's default UI,
-      including the top bar and the dropdown.
+      This block HIDES all of Google's default UI.
     -->
     <style>
       /* Hide the top translation bar */
@@ -36,6 +35,15 @@
       /* Make the body's top position normal again */
       body {
         top: 0px !important; 
+      }
+
+      /* NEW RULE: This hides the "Translated text" and 
+        "Show original" popups that appear on hover.
+      */
+      .goog-te-tooltip {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
       }
     </style>
     <!-- END GOOGLE TRANSLATE CSS OVERRIDE -->
@@ -62,7 +70,7 @@
           pageLanguage: 'en',
           includedLanguages: 'en,ms,zh-CN,ta', // Our 4 languages
           layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false // New line to help hide the banner
+          autoDisplay: false // Helps hide the banner
         }, 'google_translate_element');
       }
     </script>
