@@ -1,12 +1,13 @@
 {
   "files": {
     "main.css": "/NexusSolution/static/css/main.10695590.css",
-    "main.js": "/NexusSolution/static/js/main.dcdbc179.js",
+    "main.js": "/NexusSolution/static/js/main.f11dc690.js",
     "static/js/297.c768c82b.chunk.js": "/NexusSolution/static/js/297.c768c82b.chunk.js",
     "static/js/973.5f06caed.chunk.js": "/NexusSolution/static/js/973.5f06caed.chunk.js",
     "static/js/195.9dcc1d42.chunk.js": "/NexusSolution/static/js/195.9dcc1d42.chunk.js",
     "static/js/240.5379caed.chunk.js": "/NexusSolution/static/js/240.5379caed.chunk.js",
     "static/js/485.f3bebe01.chunk.js": "/NexusSolution/static/js/485.f3bebe01.chunk.js",
+    "static/js/38.26068f78.chunk.js": "/NexusSolution/static/js/38.26068f78.chunk.js",
     "static/js/796.f6582bdc.chunk.js": "/NexusSolution/static/js/796.f6582bdc.chunk.js",
     "static/js/165.f32cc9e7.chunk.js": "/NexusSolution/static/js/165.f32cc9e7.chunk.js",
     "static/js/881.0365ac71.chunk.js": "/NexusSolution/static/js/881.0365ac71.chunk.js",
@@ -15,12 +16,13 @@
     "service-worker.js": "/NexusSolution/service-worker.js",
     "index.html": "/NexusSolution/index.html",
     "main.10695590.css.map": "/NexusSolution/static/css/main.10695590.css.map",
-    "main.dcdbc179.js.map": "/NexusSolution/static/js/main.dcdbc179.js.map",
+    "main.f11dc690.js.map": "/NexusSolution/static/js/main.f11dc690.js.map",
     "297.c768c82b.chunk.js.map": "/NexusSolution/static/js/297.c768c82b.chunk.js.map",
     "973.5f06caed.chunk.js.map": "/NexusSolution/static/js/973.5f06caed.chunk.js.map",
     "195.9dcc1d42.chunk.js.map": "/NexusSolution/static/js/195.9dcc1d42.chunk.js.map",
     "240.5379caed.chunk.js.map": "/NexusSolution/static/js/240.5379caed.chunk.js.map",
     "485.f3bebe01.chunk.js.map": "/NexusSolution/static/js/485.f3bebe01.chunk.js.map",
+    "38.26068f78.chunk.js.map": "/NexusSolution/static/js/38.26068f78.chunk.js.map",
     "796.f6582bdc.chunk.js.map": "/NexusSolution/static/js/796.f6582bdc.chunk.js.map",
     "165.f32cc9e7.chunk.js.map": "/NexusSolution/static/js/165.f32cc9e7.chunk.js.map",
     "881.0365ac71.chunk.js.map": "/NexusSolution/static/js/881.0365ac71.chunk.js.map",
@@ -28,6 +30,6 @@
   },
   "entrypoints": [
     "static/css/main.10695590.css",
-    "static/js/main.dcdbc179.js"
+    "static/js/main.f11dc690.js"
   ]
 }
