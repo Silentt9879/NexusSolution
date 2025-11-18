@@ -1,0 +1,155 @@
+{
+  "navbar": {
+    "home": "Laman Utama",
+    "services": "Perkhidmatan",
+    "about": "Tentang Kami",
+    "blog": "Blog",
+    "contact": "Hubungi",
+    "getStarted": "Mula Sekarang"
+  },
+  "hero": {
+    "title": "Percepat Transformasi Digital Anda",
+    "subtitle": "Kami membina penyelesaian perisian canggih yang memacu pertumbuhan, kecekapan, dan inovasi untuk perniagaan anda.",
+    "servicesButton": "Perkhidmatan Kami",
+    "learnMoreButton": "Ketahui Lebih Lanjut"
+  },
+  "services": {
+    "badge": "Perkhidmatan Kami",
+    "title": "Apa Yang Kami Lakukan",
+    "subtitle": "Kami menyediakan pelbagai perkhidmatan lengkap untuk membantu anda mencapai matlamat teknologi dan perniagaan anda.",
+    "loading": "Memuatkan perkhidmatan...",
+    "error": "Maaf, kami tidak dapat memuatkan perkhidmatan kami pada masa ini."
+  },
+  "whyPartner": {
+    "imageAlt": "Profesional pelbagai berkongsi idea dalam mesyuarat",
+    "title": "Mengapa Bekerjasama dengan Nexus Solutions?",
+    "subtitle": "Kami menyampaikan hasil nyata melalui kepakaran mendalam, perkongsian yang telus, dan sokongan berdedikasi.",
+    "feature1": {
+      "title": "Hasil Terbukti",
+      "description": "Fokus pada prestasi dengan 95% pengekalan pelanggan."
+    },
+    "feature2": {
+      "title": "Pemikiran Inovatif",
+      "description": "Kami melampaui taklimat untuk menyampaikan penyelesaian kreatif."
+    }
+  },
+  "testimonials": {
+    "badge": "Bukti Sosial",
+    "title": "Apa Kata Pelanggan Kami",
+    "testimonial1": {
+      "quote": "Nexus Solutions mengubah infrastruktur kami. Pasukan DevOps mereka mengurangkan masa penempatan sebanyak 60%. Sangat disyorkan!",
+      "name": "Alex M.",
+      "title": "CTO, GlobalTech Corp"
+    },
+    "testimonial2": {
+      "quote": "Perisian tersuai yang mereka bina adalah sempurna dan selaras dengan matlamat perniagaan kami. Inovator sebenar dalam bidang ini.",
+      "name": "Sarah K.",
+      "title": "Pengarah Produk, Beta Labs"
+    },
+    "testimonial3": {
+      "quote": "Kepakaran sains data yang luar biasa. Kami memperoleh pandangan yang boleh diambil tindakan yang kami tidak tahu wujud. Perkongsian yang penting.",
+      "name": "David L.",
+      "title": "Ketua R&D, Synapse Systems"
+    }
+  },
+  "contact": {
+    "badge": "Berhubung",
+    "title": "Mari Mulakan Perbualan",
+    "subtitle": "Ada projek dalam fikiran? Kami ingin mendengar daripada anda.",
+    "leftTitle": "Berhubung",
+    "leftSubtitle": "Ada projek dalam fikiran atau hanya ingin menyapa? Isi borang dan kami akan menghubungi anda secepat mungkin.",
+    "emailLabel": "E-mel",
+    "phoneLabel": "Telefon",
+    "locationLabel": "Lokasi",
+    "formNameLabel": "Nama Penuh",
+    "formEmailLabel": "E-mel",
+    "formSubjectLabel": "Subjek",
+    "formMessageLabel": "Mesej",
+    "formNamePlaceholder": "Ahmad Ali",
+    "formEmailPlaceholder": "ahmad@contoh.com",
+    "formSubjectPlaceholder": "Bagaimana kami boleh membantu?",
+    "formMessagePlaceholder": "Beritahu kami tentang projek anda...",
+    "formSubmitButton": "Hantar Mesej",
+    "formSubmitting": "Menghantar...",
+    "successTitle": "Terima Kasih!",
+    "successMessage": "Mesej anda telah dihantar dengan jayanya. Kami akan menghubungi anda secepat mungkin.",
+    "successButton": "Mula Sekarang"
+  },
+  "about": {
+    "title": "Tentang Nexus Solutions",
+    "subtitle": "Kami adalah pasukan yang bersemangat yang berdedikasi untuk membina perisian yang menyelesaikan masalah dunia sebenar.",
+    "statsYears": "Tahun Pengalaman",
+    "statsProjects": "Projek Siap",
+    "statsClients": "Pelanggan Gembira",
+    "statsTeam": "Ahli Pasukan",
+    "storyBadge": "Perjalanan Kami",
+    "storyTitle": "Kisah Kami",
+    "storyParagraph1": "Ditubuhkan pada 2020, Nexus Solutions bermula dengan idea mudah: untuk menjadikan teknologi berkuasa mudah diakses dan ringkas untuk perniagaan dari semua saiz.",
+    "storyParagraph2": "Kami melihat terlalu banyak syarikat bergelut dengan sistem yang ketinggalan zaman dan tidak cekap. Kami tahu ada cara yang lebih baik. Hari ini, kami adalah pasukan pembangun, pereka bentuk, dan ahli strategi yang berkembang pesat yang bersemangat tentang membina penyelesaian canggih yang memacu pertumbuhan dan inovasi sebenar.",
+    "feature1": "Inovasi Pertama",
+    "feature2": "Penyelesaian Kreatif",
+    "feature3": "Berorientasikan Matlamat",
+    "feature4": "Fokus Pelanggan",
+    "timelineBadge": "Perjalanan Kami",
+    "timelineTitle": "Garis Masa Kami",
+    "timelineSubtitle": "Dari permulaan yang rendah hati kepada pemimpin industri - inilah perjalanan kami.",
+    "timeline2020Title": "Syarikat Ditubuhkan",
+    "timeline2020Desc": "Nexus Solutions dilahirkan dengan visi untuk merevolusikan pembangunan perisian.",
+    "timeline2021Title": "Pelanggan Utama Pertama",
+    "timeline2021Desc": "Mendapat pelanggan perusahaan pertama kami dan menyampaikan penyelesaian transformatif.",
+    "timeline2022Title": "Pengembangan Pasukan",
+    "timeline2022Desc": "Mengembangkan pasukan kami kepada 15+ pembangun, pereka bentuk, dan ahli strategi berbakat.",
+    "timeline2023Title": "Pencapaian 100+ Projek",
+    "timeline2023Desc": "Berjaya menyelesaikan lebih 100 projek merentasi pelbagai industri.",
+    "timeline2024Title": "Anugerah Inovasi",
+    "timeline2024Desc": "Menerima pengiktirafan industri untuk penyelesaian berkuasa AI kami yang canggih.",
+    "timeline2025Title": "Pengembangan Global",
+    "timeline2025Desc": "Membuka pejabat baru dan mengembangkan jangkauan kami ke pasaran antarabangsa.",
+    "missionTitle": "Misi Kami",
+    "missionText": "Untuk memperkasakan perniagaan dari semua saiz dengan penyelesaian teknologi yang inovatif dan mudah diakses yang memacu pertumbuhan, kecekapan, dan kejayaan. Kami percaya setiap syarikat berhak mendapat perisian berkelas dunia yang berfungsi dengan lancar.",
+    "visionTitle": "Visi Kami",
+    "visionText": "Untuk menjadi pemimpin global dalam penyelesaian perisian transformatif, diiktiraf untuk inovasi, kualiti, dan kejayaan pelanggan. Kami membayangkan masa depan di mana halangan teknologi tidak lagi wujud, dan setiap perniagaan boleh berkembang maju secara digital.",
+    "valuesBadge": "Apa Yang Mendorong Kami",
+    "valuesTitle": "Nilai Teras Kami",
+    "valuesSubtitle": "Prinsip yang membimbing setiap keputusan dan memacu kejayaan kami.",
+    "value1Title": "Inovasi Pertama",
+    "value1Desc": "Kami sentiasa menolak sempadan dan menerima teknologi canggih untuk menyampaikan penyelesaian esok hari ini.",
+    "value2Title": "Perkongsian Pelanggan",
+    "value2Desc": "Kejayaan anda adalah kejayaan kami. Kami membina hubungan yang berkekalan berdasarkan kepercayaan, ketelusan, dan hasil.",
+    "value3Title": "Kecemerlangan",
+    "value3Desc": "Kami mengekalkan standard tertinggi dalam setiap baris kod, setiap reka bentuk, dan setiap interaksi.",
+    "value4Title": "Integriti",
+    "value4Desc": "Kami beroperasi dengan kejujuran dan amalan beretika, sentiasa melakukan yang betul untuk pelanggan dan pasukan kami.",
+    "value5Title": "Kelincahan",
+    "value5Desc": "Kami menyesuaikan diri dengan cepat kepada perubahan, merangkul cabaran, dan menyampaikan penyelesaian dengan kelajuan dan ketepatan.",
+    "value6Title": "Pembelajaran Berterusan",
+    "value6Desc": "Kami melabur dalam pertumbuhan pasukan kami dan kekal mendahului trend industri untuk melayani anda dengan lebih baik.",
+    "teamBadge": "Pasukan Kami",
+    "teamTitle": "Temui Kepimpinan Kami",
+    "teamSubtitle": "Minda berdedikasi di sebalik inovasi kami.",
+    "ctaTitle": "Bersedia Untuk Bekerjasama?",
+    "ctaSubtitle": "Mari bina sesuatu yang menakjubkan bersama. Hubungi pasukan kami hari ini.",
+    "ctaButton": "Mula Sekarang"
+  },
+  "servicesPage": {
+    "title": "Perkhidmatan Kami",
+    "subtitle": "Penyelesaian komprehensif untuk mempercepat transformasi digital anda.",
+    "loading": "Memuatkan perkhidmatan...",
+    "error": "Gagal memuatkan perkhidmatan. Sila cuba lagi kemudian.",
+    "processTitle": "Proses Kami untuk",
+    "ctaTitle": "Ada projek dalam fikiran?",
+    "ctaSubtitle": "Mari bincangkan bagaimana pasukan kami boleh membantu anda mencapai matlamat anda.",
+    "ctaButton": "Berhubung"
+  },
+  "blog": {
+    "title": "Blog Kami",
+    "subtitle": "Pandangan tentang teknologi, pembangunan, dan transformasi digital.",
+    "searchPlaceholder": "Cari artikel...",
+    "noResults": "Tiada artikel dijumpai yang sepadan",
+    "loading": "Memuatkan artikel...",
+    "error": "Maaf, kami tidak dapat memuatkan blog pada masa ini."
+  },
+  "footer": {
+    "copyright": "Nexus Solutions. Hak cipta terpelihara."
+  }
+}

@@ -3,8 +3,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import partnerImage from '../assets/why-partner-image.jpg';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const WhyPartner = () => {
+    const { t } = useTranslation();
+
     return (
         <motion.section
             className="bg-gray-900 dark:bg-gray-900 py-20 md:py-28"
@@ -18,37 +21,44 @@ const WhyPartner = () => {
 
                     {/* Image Area */}
                     <div className="md:w-1/2">
-                        {/* Placeholder Image - Replace with your actual image later */}
                         <img
-                            src={partnerImage} // 👈 2. USE THE IMPORTED VARIABLE HERE
-                            alt="Diverse professionals collaborating at a meeting"
-                            className="h-80 w-full object-cover rounded-lg shadow-xl" // Tailwind classes for styling
+                            src={partnerImage}
+                            alt={t('whyPartner.imageAlt')}
+                            className="h-80 w-full object-cover rounded-lg shadow-xl"
                         />
                     </div>
 
                     {/* Content Area */}
                     <div className="md:w-1/2 text-white">
                         <h2 className="text-4xl font-bold mb-6">
-                            Why Partner with Nexus Solutions?
+                            {t('whyPartner.title')}
                         </h2>
                         <p className="text-gray-300 mb-8">
-                            We deliver tangible results through deep expertise, transparent partnerships, and dedicated support.
+                            {t('whyPartner.subtitle')}
                         </p>
 
-                        {/* Example Feature List */}
+                        {/* Feature List */}
                         <ul className="space-y-4">
                             <li className="flex items-start">
                                 <span className="text-blue-400 mr-3 text-xl">🚀</span>
                                 <div>
-                                    <h4 className="font-semibold text-xl">Proven Results</h4>
-                                    <p className="text-gray-400 text-sm">Focused on performance with 95% client retention.</p>
+                                    <h4 className="font-semibold text-xl">
+                                        {t('whyPartner.feature1.title')}
+                                    </h4>
+                                    <p className="text-gray-400 text-sm">
+                                        {t('whyPartner.feature1.description')}
+                                    </p>
                                 </div>
                             </li>
                             <li className="flex items-start">
                                 <span className="text-blue-400 mr-3 text-xl">💡</span>
                                 <div>
-                                    <h4 className="font-semibold text-xl">Innovative Thinking</h4>
-                                    <p className="text-gray-400 text-sm">We go beyond the brief to deliver creative solutions.</p>
+                                    <h4 className="font-semibold text-xl">
+                                        {t('whyPartner.feature2.title')}
+                                    </h4>
+                                    <p className="text-gray-400 text-sm">
+                                        {t('whyPartner.feature2.description')}
+                                    </p>
                                 </div>
                             </li>
                         </ul>

@@ -3,14 +3,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-
-// --- 1. IMPORT THE TRANSLATION HOOK ---
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../contexts/LanguageContext';
 
 const videoURL = process.env.PUBLIC_URL + "/videos/stockvideo.mp4";
 
 function Hero() {
-  // --- 2. GET THE 't' (TRANSLATE) FUNCTION ---
   const { t } = useTranslation();
 
   const containerVariants = {
@@ -48,16 +45,14 @@ function Hero() {
           className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
           variants={itemVariants}
         >
-          {/* --- 3. USE THE 't' FUNCTION --- */}
-          {t('hero_title')}
+          {t('hero.title')}
         </motion.h1>
 
         <motion.p
           className="mt-4 text-lg md:text-xl text-blue-100 max-w-2xl mx-auto"
           variants={itemVariants}
         >
-          {/* --- 4. USE THE 't' FUNCTION --- */}
-          {t('hero_subtitle')}
+          {t('hero.subtitle')}
         </motion.p>
 
         <motion.div
@@ -68,8 +63,7 @@ function Hero() {
           <Link to="/services" className="bg-blue-600 text-white px-8 py-3 
                                           rounded-lg text-lg font-medium 
                                           hover:bg-blue-700 transition duration-300">
-            {/* --- 5. USE THE 't' FUNCTION --- */}
-            {t('hero_services_button')}
+            {t('hero.servicesButton')}
           </Link>
           
           <HashLink 
@@ -79,8 +73,7 @@ function Hero() {
                        px-8 py-3 rounded-lg text-lg font-medium 
                        hover:bg-white hover:text-gray-900 transition duration-300"
           >
-            {/* --- 6. USE THE 't' FUNCTION --- */}
-            {t('hero_learn_more_button')}
+            {t('hero.learnMoreButton')}
           </HashLink>
 
         </motion.div>

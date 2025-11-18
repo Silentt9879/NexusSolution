@@ -7,17 +7,20 @@ import { ThemeProvider } from './context/ThemeContext';
 import './index.css';
 import App from './App';
 import './i18n';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
       <React.Suspense fallback="Loading...">
-        <HelmetProvider> {/* 👈 2. WRAP YOUR APP */}
+        <HelmetProvider>
           <BrowserRouter basename="/NexusSolution">
-            <App />
+            <LanguageProvider>
+              <App />
+            </LanguageProvider>
           </BrowserRouter>
-        </HelmetProvider> {/* 👈 2. END WRAP */}
+        </HelmetProvider>
       </React.Suspense>
     </ThemeProvider>
   </React.StrictMode>

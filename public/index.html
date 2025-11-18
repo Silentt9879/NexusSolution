@@ -12,70 +12,9 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>Nexus Solutions</title>
-
-    <!--
-      START GOOGLE TRANSLATE CSS OVERRIDE
-      This block HIDES all of Google's default UI.
-    -->
-    <style>
-      /* Hide the top translation bar */
-      #goog-gt-tt {
-        display: none !important;
-      }
-      .goog-te-banner-frame {
-        display: none !important;
-      }
-
-      /* Hide the original, ugly dropdown */
-      #google_translate_element {
-        display: none !important;
-        visibility: hidden !important;
-      }
-      
-      /* Make the body's top position normal again */
-      body {
-        top: 0px !important; 
-      }
-
-      /* NEW RULE: This hides the "Translated text" and 
-        "Show original" popups that appear on hover.
-      */
-      .goog-te-tooltip {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-      }
-    </style>
-    <!-- END GOOGLE TRANSLATE CSS OVERRIDE -->
-
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
-    <!-- 
-      This div is still required, but it will be invisible.
-      The React component will interact with this.
-    -->
-    <div id="google_translate_element"></div>
-
-    <!--
-      START GOOGLE TRANSLATE SCRIPT 
-      We're adding the 'autoDisplay: false' option
-      to help prevent the top bar from showing.
-    -->
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,ms,zh-CN,ta', // Our 4 languages
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false // Helps hide the banner
-        }, 'google_translate_element');
-      }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <!-- END GOOGLE TRANSLATE SCRIPT -->
-
   </body>
 </html>

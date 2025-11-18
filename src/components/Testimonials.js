@@ -1,34 +1,41 @@
 // src/components/Testimonials.js
 import React from 'react';
-
-const testimonialsData = [
-  {
-    quote: "Nexus Solutions transformed our infrastructure. Their DevOps team cut our deployment time by 60%. Highly recommend!",
-    name: "Alex M.",
-    title: "CTO, GlobalTech Corp"
-  },
-  {
-    quote: "The custom software they built was flawless and perfectly aligned with our business goals. True innovators in the space.",
-    name: "Sarah K.",
-    title: "Director of Product, Beta Labs"
-  },
-  {
-    quote: "Exceptional data science expertise. We gained actionable insights we didn't even know were possible. A vital partnership.",
-    name: "David L.",
-    title: "Head of R&D, Synapse Systems"
-  }
-];
+import { useTranslation } from '../contexts/LanguageContext';
 
 const Testimonials = () => {
+  const { t } = useTranslation();
+
+  const testimonialsData = [
+    {
+      quote: t('testimonials.testimonial1.quote'),
+      name: t('testimonials.testimonial1.name'),
+      title: t('testimonials.testimonial1.title')
+    },
+    {
+      quote: t('testimonials.testimonial2.quote'),
+      name: t('testimonials.testimonial2.name'),
+      title: t('testimonials.testimonial2.title')
+    },
+    {
+      quote: t('testimonials.testimonial3.quote'),
+      name: t('testimonials.testimonial3.name'),
+      title: t('testimonials.testimonial3.title')
+    }
+  ];
+
   return (
     <section className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-6 text-center">
         
         {/* Subtitle */}
-        <p className="text-sm uppercase tracking-widest text-blue-400 mb-2">Social Proof</p>
+        <p className="text-sm uppercase tracking-widest text-blue-400 mb-2">
+          {t('testimonials.badge')}
+        </p>
         
         {/* Title */}
-        <h2 className="text-4xl font-bold mb-12">What Our Clients Say</h2>
+        <h2 className="text-4xl font-bold mb-12">
+          {t('testimonials.title')}
+        </h2>
         
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -38,7 +45,7 @@ const Testimonials = () => {
               className="p-8 bg-gray-800 rounded-lg shadow-xl hover:shadow-2xl transition duration-300"
             >
               {/* Quote Icon */}
-              <blockquote className="text-4xl text-blue-500 font-serif mb-4">“</blockquote>
+              <blockquote className="text-4xl text-blue-500 font-serif mb-4">"</blockquote>
               
               {/* Quote */}
               <p className="text-lg italic mb-6">"{testimonial.quote}"</p>

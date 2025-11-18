@@ -1,0 +1,155 @@
+{
+  "navbar": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "blog": "Blog",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "Accelerate Your Digital Transformation",
+    "subtitle": "We build cutting-edge software solutions that drive growth, efficiency, and innovation for your business.",
+    "servicesButton": "Our Services",
+    "learnMoreButton": "Learn More"
+  },
+  "services": {
+    "badge": "Our Services",
+    "title": "What We Do",
+    "subtitle": "We provide a complete range of services to help you achieve your technology and business goals.",
+    "loading": "Loading services...",
+    "error": "Sorry, we couldn't load our services at this time."
+  },
+  "whyPartner": {
+    "imageAlt": "Diverse professionals collaborating at a meeting",
+    "title": "Why Partner with Nexus Solutions?",
+    "subtitle": "We deliver tangible results through deep expertise, transparent partnerships, and dedicated support.",
+    "feature1": {
+      "title": "Proven Results",
+      "description": "Focused on performance with 95% client retention."
+    },
+    "feature2": {
+      "title": "Innovative Thinking",
+      "description": "We go beyond the brief to deliver creative solutions."
+    }
+  },
+  "testimonials": {
+    "badge": "Social Proof",
+    "title": "What Our Clients Say",
+    "testimonial1": {
+      "quote": "Nexus Solutions transformed our infrastructure. Their DevOps team cut our deployment time by 60%. Highly recommend!",
+      "name": "Alex M.",
+      "title": "CTO, GlobalTech Corp"
+    },
+    "testimonial2": {
+      "quote": "The custom software they built was flawless and perfectly aligned with our business goals. True innovators in the space.",
+      "name": "Sarah K.",
+      "title": "Director of Product, Beta Labs"
+    },
+    "testimonial3": {
+      "quote": "Exceptional data science expertise. We gained actionable insights we didn't even know were possible. A vital partnership.",
+      "name": "David L.",
+      "title": "Head of R&D, Synapse Systems"
+    }
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Let's Start a Conversation",
+    "subtitle": "Have a project in mind? We'd love to hear from you.",
+    "leftTitle": "Get In Touch",
+    "leftSubtitle": "Have a project in mind or just want to say hello? Fill out the form and we'll get back to you as soon as possible.",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "locationLabel": "Location",
+    "formNameLabel": "Full Name",
+    "formEmailLabel": "Email",
+    "formSubjectLabel": "Subject",
+    "formMessageLabel": "Message",
+    "formNamePlaceholder": "John Doe",
+    "formEmailPlaceholder": "john@example.com",
+    "formSubjectPlaceholder": "How can we help?",
+    "formMessagePlaceholder": "Tell us about your project...",
+    "formSubmitButton": "Send Message",
+    "formSubmitting": "Sending...",
+    "successTitle": "Thank You!",
+    "successMessage": "Your message has been sent successfully. We'll get back to you as soon as possible.",
+    "successButton": "Get Started"
+  },
+  "about": {
+    "title": "About Nexus Solutions",
+    "subtitle": "We're a passionate team dedicated to building software that solves real-world problems.",
+    "statsYears": "Years Experience",
+    "statsProjects": "Projects Completed",
+    "statsClients": "Happy Clients",
+    "statsTeam": "Team Members",
+    "storyBadge": "Our Journey",
+    "storyTitle": "Our Story",
+    "storyParagraph1": "Founded in 2020, Nexus Solutions began with a simple idea: to make powerful technology accessible and simple for businesses of all sizes.",
+    "storyParagraph2": "We saw too many companies struggling with outdated, inefficient systems. We knew there was a better way. Today, we're a thriving team of developers, designers, and strategists who are passionate about building cutting-edge solutions that drive real growth and innovation.",
+    "feature1": "Innovation First",
+    "feature2": "Creative Solutions",
+    "feature3": "Goal Oriented",
+    "feature4": "Client Focused",
+    "timelineBadge": "Our Journey",
+    "timelineTitle": "Our Timeline",
+    "timelineSubtitle": "From humble beginnings to industry leaders - here's our journey.",
+    "timeline2020Title": "Company Founded",
+    "timeline2020Desc": "Nexus Solutions was born with a vision to revolutionize software development.",
+    "timeline2021Title": "First Major Client",
+    "timeline2021Desc": "Secured our first enterprise client and delivered a transformative solution.",
+    "timeline2022Title": "Team Expansion",
+    "timeline2022Desc": "Grew our team to 15+ talented developers, designers, and strategists.",
+    "timeline2023Title": "100+ Projects Milestone",
+    "timeline2023Desc": "Successfully completed over 100 projects across multiple industries.",
+    "timeline2024Title": "Innovation Award",
+    "timeline2024Desc": "Received industry recognition for our cutting-edge AI-powered solutions.",
+    "timeline2025Title": "Global Expansion",
+    "timeline2025Desc": "Opened new offices and expanded our reach to international markets.",
+    "missionTitle": "Our Mission",
+    "missionText": "To empower businesses of all sizes with innovative, accessible technology solutions that drive growth, efficiency, and success. We believe every company deserves world-class software that works seamlessly.",
+    "visionTitle": "Our Vision",
+    "visionText": "To be the global leader in transformative software solutions, recognized for innovation, quality, and client success. We envision a future where technology barriers no longer exist, and every business can thrive digitally.",
+    "valuesBadge": "What Drives Us",
+    "valuesTitle": "Our Core Values",
+    "valuesSubtitle": "The principles that guide every decision and drive our success.",
+    "value1Title": "Innovation First",
+    "value1Desc": "We constantly push boundaries and embrace cutting-edge technologies to deliver tomorrow's solutions today.",
+    "value2Title": "Client Partnership",
+    "value2Desc": "Your success is our success. We build lasting relationships based on trust, transparency, and results.",
+    "value3Title": "Excellence",
+    "value3Desc": "We maintain the highest standards in every line of code, every design, and every interaction.",
+    "value4Title": "Integrity",
+    "value4Desc": "We operate with honesty and ethical practices, always doing what's right for our clients and team.",
+    "value5Title": "Agility",
+    "value5Desc": "We adapt quickly to changes, embrace challenges, and deliver solutions with speed and precision.",
+    "value6Title": "Continuous Learning",
+    "value6Desc": "We invest in our team's growth and stay ahead of industry trends to serve you better.",
+    "teamBadge": "Our Team",
+    "teamTitle": "Meet Our Leadership",
+    "teamSubtitle": "The dedicated minds behind our innovation.",
+    "ctaTitle": "Ready to Work Together?",
+    "ctaSubtitle": "Let's build something amazing together. Get in touch with our team today.",
+    "ctaButton": "Get Started"
+  },
+  "servicesPage": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive solutions to accelerate your digital transformation.",
+    "loading": "Loading services...",
+    "error": "Failed to load services. Please try again later.",
+    "processTitle": "Our Process for",
+    "ctaTitle": "Have a Project in Mind?",
+    "ctaSubtitle": "Let's discuss how our team can help you achieve your goals.",
+    "ctaButton": "Get in Touch"
+  },
+  "blog": {
+    "title": "Our Blog",
+    "subtitle": "Insights on technology, development, and digital transformation.",
+    "searchPlaceholder": "Search posts...",
+    "noResults": "No posts found matching",
+    "loading": "Loading posts...",
+    "error": "Sorry, we couldn't load the blog at this time."
+  },
+  "footer": {
+    "copyright": "Nexus Solutions. All rights reserved."
+  }
+}

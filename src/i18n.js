@@ -1,42 +1,27 @@
-// src/i18n.js
-// This is the main configuration file for the translation library
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
-  // Use the 'http-backend' to load translation files from your /public folder
-  .use(HttpApi)
-  // Detect user's language
-  .use(LanguageDetector)
-  // Pass the i18n instance to react-i18next
-  .use(initReactI18next)
-  // Initialize the configuration
+  .use(HttpApi) // Loads translations from your /public folder
+  .use(LanguageDetector) // Detects user language (e.g., from browser settings)
+  .use(initReactI18next) // Passes i18n down to React
   .init({
-    // Default language
+    supportedLngs: ['en', 'es', 'fr', 'zh'], // English, Spanish, French, Chinese
     fallbackLng: 'en',
-    debug: false, // Set to true to see logs in console
-
-    // Define which languages are supported
-    // The 'translation' key is the default namespace
-    supportedLngs: ['en', 'ms', 'zh-CN', 'ta'],
-
-    interpolation: {
-      escapeValue: false, // React already protects from XSS
-    },
-
-    // Options for the 'http-backend'
+    debug: false,
+    // Where to find the translation files
     backend: {
-      loadPath: '/NexusSolution/locales/{{lng}}/translation.json',
+      loadPath: '/NexusSolution/locales/{{lng}}/translation.json', 
+      // ^ NOTE: Since you use GitHub Pages with a repo name (NexusSolution), 
+      // we might need the repo prefix. If testing locally, use '/locales/{{lng}}/translation.json'
     },
-    
-    // Options for the language detector
     detection: {
-      order: ['cookie', 'localStorage', 'navigator', 'htmlTag'],
-      caches: ['cookie', 'localStorage'], // Cache the selected language
+      order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
+      caches: ['cookie'],
     },
+    react: { useSuspense: false }
   });
 
 export default i18n;

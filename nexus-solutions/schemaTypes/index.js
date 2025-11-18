@@ -4,12 +4,14 @@ import teamMember from './teamMember'
 import service from './service'
 import post from './post'
 import blockContent from './blockContent'
-import comment from './comment' // 👈 1. IMPORT IT
+import comment from './comment' 
+import processStep from './processStep'
 
 export const schemaTypes = [
   teamMember,
   service,
   post,
   blockContent,
-  comment, // 👈 2. ADD IT TO THE ARRAY
+  comment,
+  processStep,
 ]
