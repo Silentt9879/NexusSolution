@@ -376,7 +376,6 @@ function EnhancedTestimonialsSection() {
   );
 }
 
-// --- ENHANCED CONTACT WRAPPER ---
 function EnhancedContactSection() {
   return (
     <section id="contact" className="bg-gradient-to-b from-gray-50 to-white 

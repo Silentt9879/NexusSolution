@@ -96,7 +96,7 @@
     "timeline2020Title": "Syarikat Ditubuhkan",
     "timeline2020Desc": "Nexus Solutions dilahirkan dengan visi untuk merevolusikan pembangunan perisian.",
     "timeline2021Title": "Pelanggan Utama Pertama",
-    "timeline2021Desc": "Mendapat pelanggan perusahaan pertama kami dan menyampaikan penyelesaian transformatif.",
+    "timeline2021Desc": "Mendapatkan pelanggan perusahaan pertama kami dan menyampaikan penyelesaian transformatif.",
     "timeline2022Title": "Pengembangan Pasukan",
     "timeline2022Desc": "Mengembangkan pasukan kami kepada 15+ pembangun, pereka bentuk, dan ahli strategi berbakat.",
     "timeline2023Title": "Pencapaian 100+ Projek",
@@ -134,6 +134,7 @@
   "servicesPage": {
     "title": "Perkhidmatan Kami",
     "subtitle": "Penyelesaian komprehensif untuk mempercepat transformasi digital anda.",
+    "expertiseBadge": "💼 Kepakaran Kami",
     "loading": "Memuatkan perkhidmatan...",
     "error": "Gagal memuatkan perkhidmatan. Sila cuba lagi kemudian.",
     "processTitle": "Proses Kami untuk",
@@ -143,11 +144,37 @@
   },
   "blog": {
     "title": "Blog Kami",
-    "subtitle": "Pandangan tentang teknologi, pembangunan, dan transformasi digital.",
+    "subtitle": "Wawasan mengenai teknologi, pembangunan, dan transformasi digital.",
     "searchPlaceholder": "Cari artikel...",
-    "noResults": "Tiada artikel dijumpai yang sepadan",
-    "loading": "Memuatkan artikel...",
-    "error": "Maaf, kami tidak dapat memuatkan blog pada masa ini."
+    "hero": { "badge": "📝 Wawasan & Artikel" },
+    "stats": {
+      "totalArticles": "Jumlah Artikel",
+      "monthlyReaders": "Pembaca Bulanan",
+      "topicsCovered": "Topik Diliputi",
+      "expertAuthors": "Penulis Pakar"
+    },
+    "featured": {
+      "badge": "⭐ Artikel Pilihan",
+      "publishedOn": "Diterbitkan pada",
+      "readButton": "Baca Artikel Penuh →"
+    },
+    "search": { "article": "artikel", "articles": "artikel", "found": "dijumpai" },
+    "latest": { "badge": "📚 Semua Artikel", "title": "Artikel Terkini", "subtitle": "Kekal termaklum..." },
+    "grid": { "readMore": "Baca Selanjutnya →" }
+  },
+  "singlePost": {
+    "loadingPost": "Memuatkan Pos...",
+    "backToBlog": "← Kembali ke Blog",
+    "errorMessage": "Ralat:",
+    "publishedOn": "Diterbitkan pada",
+    "commentsCount": "Ulasan",
+    "noComments": "Belum ada ulasan. Jadilah yang pertama meninggalkan satu!",
+    "leaveComment": "Tinggalkan Ulasan",
+    "thankYouMessage": "Terima kasih atas ulasan anda! Ia sedang menunggu moderasi.",
+    "commentFormName": "Nama",
+    "commentFormComment": "Ulasan",
+    "submitButton": "Hantar Ulasan",
+    "submittingButton": "Menghantar..."
   },
   "footer": {
     "copyright": "Nexus Solutions. Hak cipta terpelihara."

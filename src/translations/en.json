@@ -134,6 +134,7 @@
   "servicesPage": {
     "title": "Our Services",
     "subtitle": "Comprehensive solutions to accelerate your digital transformation.",
+    "expertiseBadge": "💼 Our Expertise",
     "loading": "Loading services...",
     "error": "Failed to load services. Please try again later.",
     "processTitle": "Our Process for",
@@ -144,10 +145,48 @@
   "blog": {
     "title": "Our Blog",
     "subtitle": "Insights on technology, development, and digital transformation.",
-    "searchPlaceholder": "Search posts...",
-    "noResults": "No posts found matching",
-    "loading": "Loading posts...",
-    "error": "Sorry, we couldn't load the blog at this time."
+    "searchPlaceholder": "Search articles...",
+    "hero": {
+      "badge": "📝 Insights & Articles"
+    },
+    "stats": {
+      "totalArticles": "Total Articles",
+      "monthlyReaders": "Monthly Readers",
+      "topicsCovered": "Topics Covered",
+      "expertAuthors": "Expert Authors"
+    },
+    "featured": {
+      "badge": "⭐ Featured Article",
+      "publishedOn": "Published on",
+      "readButton": "Read Full Article →"
+    },
+    "search": {
+      "article": "article",
+      "articles": "articles",
+      "found": "found"
+    },
+    "latest": {
+      "badge": "📚 All Articles",
+      "title": "Latest Articles",
+      "subtitle": "Stay updated..."
+    },
+    "grid": {
+      "readMore": "Read More →"
+    }
+  },
+  "singlePost": {
+    "loadingPost": "Loading Post...",
+    "backToBlog": "← Back to Blog",
+    "errorMessage": "Error:",
+    "publishedOn": "Published on",
+    "commentsCount": "Comments",
+    "noComments": "No comments yet. Be the first to leave one!",
+    "leaveComment": "Leave a Comment",
+    "thankYouMessage": "Thank you for your comment! It is awaiting moderation.",
+    "commentFormName": "Name",
+    "commentFormComment": "Comment",
+    "submitButton": "Submit Comment",
+    "submittingButton": "Submitting..."
   },
   "footer": {
     "copyright": "Nexus Solutions. All rights reserved."

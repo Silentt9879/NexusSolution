@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { PortableText } from '@portabletext/react';
+import { useTranslation } from '../contexts/LanguageContext';
 import { client, urlFor } from '../client';
 import { motion } from 'framer-motion';
 
@@ -17,6 +18,8 @@ function formatDate(date) {
 
 // --- Main Component ---
 function SinglePostPage() {
+  const { t } = useTranslation();
+  
   // State for post, comments, loading, and errors
   const [postData, setPostData] = useState(null);
   const [comments, setComments] = useState(null);
@@ -33,7 +36,7 @@ function SinglePostPage() {
   // 2. Fetch the correct blog post
   useEffect(() => {
     const postQuery = `*[_type == "post" && slug.current == $slug][0]{
-      _id, // We need the post ID to find its comments
+      _id,
       title,
       "slug": slug.current,
       mainImage,
@@ -41,15 +44,14 @@ function SinglePostPage() {
       body
     }`;
 
-    setIsLoading(true); // Set loading state
+    setIsLoading(true);
     client.fetch(postQuery, { slug })
       .then((data) => {
         if (data) {
           setPostData(data);
-          // We don't stop loading here; we wait for comments
         } else {
           setError(new Error('Post not found.'));
-          setIsLoading(false); // Stop loading if post not found
+          setIsLoading(false);
         }
       })
       .catch((err) => {
@@ -72,7 +74,7 @@ function SinglePostPage() {
       client.fetch(commentsQuery, { postId: postData._id })
         .then((data) => {
           setComments(data);
-          setIsLoading(false); // Stop loading only after comments are fetched
+          setIsLoading(false);
         })
         .catch((err) => {
           console.error('Error fetching comments:', err);
@@ -80,7 +82,7 @@ function SinglePostPage() {
           setIsLoading(false);
         });
     }
-  }, [postData]); // This effect depends on 'postData'
+  }, [postData]);
 
   // --- Handle Form Input Change ---
   const handleFormChange = (e) => {
@@ -91,7 +93,7 @@ function SinglePostPage() {
     }));
   };
 
-  // --- Handle Form Submission (Simulated) ---
+  // --- Handle Form Submission ---
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.comment) return;
@@ -101,11 +103,10 @@ function SinglePostPage() {
     const submission = {
       name: formData.name,
       comment: formData.comment,
-      post: postData._id, // This is the ID of the current post
+      post: postData._id,
     };
 
     try {
-      // Send the data to our new server, not Sanity
       const response = await fetch('http://localhost:3001/api/submit-comment', {
         method: 'POST',
         headers: {
@@ -118,14 +119,12 @@ function SinglePostPage() {
         throw new Error('Failed to submit comment');
       }
 
-      // It worked!
       setIsSubmitting(false);
-      setIsSubmitted(true); // Show the "Thank You" message
-      setFormData({ name: '', comment: '' }); // Clear the form
+      setIsSubmitted(true);
+      setFormData({ name: '', comment: '' });
 
     } catch (err) {
       console.error('Error submitting comment:', err);
-      // We could add an error message to the user here
       setIsSubmitting(false);
     }
   };
@@ -134,7 +133,9 @@ function SinglePostPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen bg-white dark:bg-gray-900">
-        <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-400">Loading Post...</h1>
+        <h1 className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+          {t('singlePost.loadingPost')}
+        </h1>
       </div>
     );
   }
@@ -143,16 +144,16 @@ function SinglePostPage() {
     return (
       <div className="container mx-auto px-6 py-20 text-center">
         <h1 className="text-3xl font-bold text-red-600 dark:text-red-400">
-          Error: {error.message}
+          {t('singlePost.errorMessage')} {error.message}
         </h1>
         <Link to="/blog" className="mt-4 inline-block text-blue-600 dark:text-blue-400 hover:underline">
-          &larr; Back to Blog
+          {t('singlePost.backToBlog')}
         </Link>
       </div>
     );
   }
 
-  if (!postData) return null; // Should be covered, but good practice
+  if (!postData) return null;
 
   return (
     <motion.div
@@ -179,14 +180,13 @@ function SinglePostPage() {
             {postData.title}
           </h1>
           <p className="text-lg text-gray-200 z-10 mt-2">
-            Published on {formatDate(postData.publishedAt)}
+            {t('singlePost.publishedOn')} {formatDate(postData.publishedAt)}
           </p>
         </div>
       </div>
       
       {/* 2. Post Body Content */}
       <div className="container mx-auto max-w-3xl px-6 py-12 md:py-20">
-        {/* The typography plugin styles this automatically */}
         <article className="prose prose-lg dark:prose-invert
                             prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
                             prose-a:text-blue-600 dark:prose-a:text-blue-400
@@ -200,11 +200,10 @@ function SinglePostPage() {
       <section className="bg-gray-50 dark:bg-gray-800 py-12 md:py-20">
         <div className="container mx-auto max-w-3xl px-6">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Comments ({comments ? comments.length : 0})
+            {t('singlePost.commentsCount')} ({comments ? comments.length : 0})
           </h2>
           
           <div className="space-y-6">
-            {/* If we have comments, map them out */}
             {comments && comments.length > 0 ? (
               comments.map((comment) => (
                 <div key={comment._id} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow">
@@ -222,29 +221,26 @@ function SinglePostPage() {
                 </div>
               ))
             ) : (
-              // If there are no comments
               <p className="text-gray-600 dark:text-gray-300">
-                No comments yet. Be the first to leave one!
+                {t('singlePost.noComments')}
               </p>
             )}
             
             {/* 4. Leave a Comment Form */}
             <div className="pt-8">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                Leave a Comment
+                {t('singlePost.leaveComment')}
               </h3>
 
-              {/* Show "Thank You" message after submission */}
               {isSubmitted ? (
                 <div className="bg-green-50 dark:bg-green-900 border border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 p-4 rounded-lg">
-                  Thank you for your comment! It is awaiting moderation.
+                  {t('singlePost.thankYouMessage')}
                 </div>
               ) : (
-                // Show the form
                 <form onSubmit={handleCommentSubmit} className="space-y-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      Name
+                      {t('singlePost.commentFormName')}
                     </label>
                     <input
                       type="text"
@@ -260,7 +256,7 @@ function SinglePostPage() {
                   </div>
                   <div>
                     <label htmlFor="comment" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      Comment
+                      {t('singlePost.commentFormComment')}
                     </label>
                     <textarea
                       name="comment"
@@ -284,7 +280,7 @@ function SinglePostPage() {
                                  transition duration-300
                                  disabled:bg-gray-400 dark:disabled:bg-gray-600"
                     >
-                      {isSubmitting ? "Submitting..." : "Submit Comment"}
+                      {isSubmitting ? t('singlePost.submittingButton') : t('singlePost.submitButton')}
                     </button>
                   </div>
                 </form>

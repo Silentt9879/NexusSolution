@@ -141,8 +141,123 @@ function FloatingParticles() {
   );
 }
 
+// --- NO RESULTS STATE COMPONENT ---
+function NoResultsState({ searchTerm, onClear }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="py-20"
+    >
+      <div className="max-w-2xl mx-auto px-6">
+        {/* Animated Icon */}
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
+          className="flex justify-center mb-8"
+        >
+          <motion.div
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 3, repeat: Infinity }}
+            className="w-24 h-24 bg-gradient-to-br from-blue-100 to-purple-100 
+                      dark:from-blue-900/30 dark:to-purple-900/30 rounded-full 
+                      flex items-center justify-center shadow-xl"
+          >
+            <svg className="w-12 h-12 text-blue-600 dark:text-blue-400" fill="none" 
+                 stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </motion.div>
+        </motion.div>
+
+        {/* Main Content */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-center space-y-6"
+        >
+          <div className="space-y-3">
+            <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white">
+              No articles found
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              We couldn't find any articles matching <br />
+              <span className="font-bold text-blue-600 dark:text-blue-400">
+                "{searchTerm}"
+              </span>
+            </p>
+          </div>
+
+          {/* Suggestions Box */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="bg-gradient-to-br from-blue-50 to-indigo-50 
+                      dark:from-blue-900/20 dark:to-purple-900/20 
+                      rounded-2xl p-8 border-2 border-blue-200 dark:border-blue-800
+                      shadow-lg"
+          >
+            <div className="flex items-start gap-3 mb-4">
+              <span className="text-2xl">💡</span>
+              <div className="text-left">
+                <p className="font-bold text-gray-900 dark:text-white mb-3">
+                  Here are some tips to improve your search:
+                </p>
+                <ul className="text-gray-700 dark:text-gray-300 space-y-2">
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-600">✓</span>
+                    Try different or more general keywords
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-600">✓</span>
+                    Double-check your spelling
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-600">✓</span>
+                    Use fewer or simpler words
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-blue-600">✓</span>
+                    Remove quotes or special characters
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center pt-4"
+          >
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onClear}
+              className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 
+                       text-white font-bold rounded-full shadow-lg
+                       hover:shadow-xl transition-all duration-300"
+            >
+              ← Clear Search & Browse All
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+}
+
 // --- FEATURED ARTICLE SECTION ---
 function FeaturedArticle({ post }) {
+  const { t } = useTranslation();
+
   if (!post) return null;
 
   const formatDate = (dateString) => {
@@ -199,7 +314,7 @@ function FeaturedArticle({ post }) {
                 <span className="inline-flex items-center px-4 py-2 rounded-full 
                                bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 
                                text-sm font-semibold">
-                  ⭐ Featured Article
+                  {t('blog.featured.badge')}
                 </span>
               </motion.div>
 
@@ -208,7 +323,7 @@ function FeaturedArticle({ post }) {
               </h3>
 
               <p className="text-lg text-gray-600 dark:text-gray-300">
-                Published on <span className="font-semibold text-blue-600 dark:text-blue-400">
+                {t('blog.featured.publishedOn')} <span className="font-semibold text-blue-600 dark:text-blue-400">
                   {formatDate(post.publishedAt)}
                 </span>
               </p>
@@ -224,7 +339,7 @@ function FeaturedArticle({ post }) {
                            text-white font-bold text-lg rounded-full shadow-xl 
                            hover:shadow-2xl transition-all duration-300"
                 >
-                  Read Full Article →
+                  {t('blog.featured.readButton')}
                 </motion.button>
               </Link>
             </div>
@@ -248,6 +363,14 @@ function BlogPage() {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+
+  // Define stats data here to use translation
+  const statsData = [
+    { label: t('blog.stats.totalArticles'), value: 50, suffix: "+" },
+    { label: t('blog.stats.monthlyReaders'), value: 10, suffix: "K+" },
+    { label: t('blog.stats.topicsCovered'), value: 20, suffix: "+" },
+    { label: t('blog.stats.expertAuthors'), value: 15, suffix: "+" }
+  ];
 
   useEffect(() => {
     const query = `*[_type == "post"] | order(publishedAt desc) {
@@ -325,18 +448,9 @@ function BlogPage() {
       );
     }
     
+    // IMPROVED NO RESULTS STATE
     if (filteredPosts && filteredPosts.length === 0) {
-      return (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center p-12 bg-blue-50 dark:bg-blue-950/30 rounded-2xl border-2 border-blue-200 dark:border-blue-800"
-        >
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            {t('blog.noResults')} "<span className="font-semibold text-blue-600 dark:text-blue-400">{searchTerm}</span>".
-          </p>
-        </motion.div>
-      );
+      return <NoResultsState searchTerm={searchTerm} onClear={() => setSearchTerm("")} />;
     }
     
     return (
@@ -378,7 +492,7 @@ function BlogPage() {
                     whileHover={{ scale: 1 }}
                   >
                     <div className="px-6 py-3 bg-white text-blue-600 font-bold rounded-full shadow-xl">
-                      Read More →
+                      {t('blog.grid.readMore')}
                     </div>
                   </motion.div>
                 </div>
@@ -459,11 +573,10 @@ function BlogPage() {
                              bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm
                              text-blue-600 dark:text-blue-400 
                              text-sm font-semibold shadow-lg border-2 border-blue-200 dark:border-blue-800">
-                📝 Insights & Articles
+                {t('blog.hero.badge')}
               </span>
             </motion.div>
 
-            {/* ADDED 'pb-3' TO FIX THE CUT-OFF 'g' */}
             <motion.h1 
               className="text-4xl md:text-6xl font-extrabold mb-4 pb-3
                          bg-clip-text text-transparent bg-gradient-to-r 
@@ -511,15 +624,10 @@ function BlogPage() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-100px" }}
             variants={cardContainerVariants}
           >
-            {[
-              { label: "Total Articles", value: 50, suffix: "+" },
-              { label: "Monthly Readers", value: 10, suffix: "K+" },
-              { label: "Topics Covered", value: 20, suffix: "+" },
-              { label: "Expert Authors", value: 15, suffix: "+" }
-            ].map((stat) => (
+            {statsData.map((stat) => (
               <motion.div 
                 key={stat.label}
                 variants={fadeInVariants}
@@ -544,7 +652,7 @@ function BlogPage() {
       {/* Featured Article Section */}
       {featuredPost && <FeaturedArticle post={featuredPost} />}
 
-      {/* Blog Grid Section (Formerly contained Categories below it) */}
+      {/* Blog Grid Section */}
       <section className="bg-gradient-to-b from-gray-50 to-white 
                           dark:from-gray-800 dark:to-gray-900 
                           py-20 md:py-32 relative overflow-hidden">
@@ -584,17 +692,17 @@ function BlogPage() {
                 {/* Clear button */}
                 {searchTerm && (
                   <motion.button
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    exit={{ scale: 0 }}
+                    initial={{ scale: 0, y: "-50%" }}
+    animate={{ scale: 1, y: "-50%" }}
+    exit={{ scale: 0, y: "-50%" }}
                     onClick={() => setSearchTerm("")}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2
-                             w-8 h-8 flex items-center justify-center
-                             bg-gray-200 dark:bg-gray-700 rounded-full
-                             hover:bg-gray-300 dark:hover:bg-gray-600
-                             transition-colors duration-200"
+                    className="absolute right-4 top-1/2
+             w-10 h-10 flex items-center justify-center
+             bg-gray-200 dark:bg-gray-700 rounded-full
+             hover:bg-gray-300 dark:hover:bg-gray-600
+             transition-colors duration-200"
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </motion.button>
@@ -608,7 +716,7 @@ function BlogPage() {
                   animate={{ opacity: 1 }}
                   className="mt-4 text-center text-gray-600 dark:text-gray-400"
                 >
-                  {filteredPosts.length} {filteredPosts.length === 1 ? 'article' : 'articles'} found
+                  {filteredPosts.length} {filteredPosts.length === 1 ? t('blog.search.article') : t('blog.search.articles')} {t('blog.search.found')}
                 </motion.p>
               )}
             </div>
@@ -625,16 +733,16 @@ function BlogPage() {
               <span className="inline-flex items-center px-4 py-2 rounded-full 
                              bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 
                              text-sm font-semibold">
-                📚 All Articles
+                {t('blog.latest.badge')}
               </span>
             </motion.div>
             
             <AnimatedSection variants={fadeInVariants}>
               <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-                Latest Articles
+                {t('blog.latest.title')}
               </h2>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Stay updated with our latest insights and stories.
+                {t('blog.latest.subtitle')}
               </p>
             </AnimatedSection>
           </div>

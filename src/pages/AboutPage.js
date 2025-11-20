@@ -5,6 +5,24 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { HashLink } from 'react-router-hash-link';
 import { client, urlFor } from '../client';
+import { useTranslation } from '../contexts/LanguageContext';
+
+// Helper function to get the correct language text
+const getLocalizedText = (field, language) => {
+  if (!field) return '';
+  
+  // If field is a string, return it directly
+  if (typeof field === 'string') {
+    return field;
+  }
+  
+  // If field is an object with language keys
+  if (typeof field === 'object') {
+    return field[language] || field['en'] || field[Object.keys(field)[0]] || '';
+  }
+  
+  return '';
+};
 
 // --- ENHANCED ANIMATION VARIANTS ---
 const fadeInVariants = { 
@@ -157,12 +175,12 @@ function FloatingParticles() {
 }
 
 // --- TIMELINE COMPONENT ---
-function TimelineSection() {
+function TimelineSection({ t }) {
   const milestones = [
     {
       year: "2020",
-      title: "Company Founded",
-      description: "Nexus Solutions was born with a vision to revolutionize software development.",
+      title: t('about.timeline2020Title'),
+      description: t('about.timeline2020Desc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -171,8 +189,8 @@ function TimelineSection() {
     },
     {
       year: "2021",
-      title: "First Major Client",
-      description: "Secured our first enterprise client and delivered a transformative solution.",
+      title: t('about.timeline2021Title'),
+      description: t('about.timeline2021Desc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -181,8 +199,8 @@ function TimelineSection() {
     },
     {
       year: "2022",
-      title: "Team Expansion",
-      description: "Grew our team to 15+ talented developers, designers, and strategists.",
+      title: t('about.timeline2022Title'),
+      description: t('about.timeline2022Desc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -191,8 +209,8 @@ function TimelineSection() {
     },
     {
       year: "2023",
-      title: "100+ Projects Milestone",
-      description: "Successfully completed over 100 projects across multiple industries.",
+      title: t('about.timeline2023Title'),
+      description: t('about.timeline2023Desc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -201,8 +219,8 @@ function TimelineSection() {
     },
     {
       year: "2024",
-      title: "Innovation Award",
-      description: "Received industry recognition for our cutting-edge AI-powered solutions.",
+      title: t('about.timeline2024Title'),
+      description: t('about.timeline2024Desc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
@@ -211,11 +229,11 @@ function TimelineSection() {
     },
     {
       year: "2025",
-      title: "Global Expansion",
-      description: "Opened new offices and expanded our reach to international markets.",
+      title: t('about.timeline2025Title'),
+      description: t('about.timeline2025Desc'),
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0110.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       )
     }
@@ -241,16 +259,16 @@ function TimelineSection() {
             <span className="inline-flex items-center px-4 py-2 rounded-full 
                            bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 
                            text-sm font-semibold">
-              📅 Our Journey
+              📅 {t('about.timelineBadge')}
             </span>
           </motion.div>
           
           <AnimatedSection variants={fadeInVariants}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-              Our Timeline
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 pb-2">
+              {t('about.timelineTitle')}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              From humble beginnings to industry leaders - here's our journey.
+              {t('about.timelineSubtitle')}
             </p>
           </AnimatedSection>
         </div>
@@ -330,7 +348,7 @@ function TimelineSection() {
 }
 
 // --- MISSION & VISION COMPONENT ---
-function MissionVision() {
+function MissionVision({ t }) {
   return (
     <section className="bg-gradient-to-br from-blue-600 to-purple-600 py-20 md:py-32 relative overflow-hidden">
       {/* Animated background pattern */}
@@ -366,12 +384,10 @@ function MissionVision() {
                 </svg>
               </div>
               <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
-                Our Mission
+                {t('about.missionTitle')}
               </h3>
               <p className="text-lg text-blue-50 leading-relaxed">
-                To empower businesses of all sizes with innovative, accessible technology 
-                solutions that drive growth, efficiency, and success. We believe every 
-                company deserves world-class software that works seamlessly.
+                {t('about.missionText')}
               </p>
               <motion.div
                 initial={{ width: 0 }}
@@ -397,12 +413,10 @@ function MissionVision() {
                 </svg>
               </div>
               <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-6">
-                Our Vision
+                {t('about.visionTitle')}
               </h3>
               <p className="text-lg text-blue-50 leading-relaxed">
-                To be the global leader in transformative software solutions, recognized 
-                for innovation, quality, and client success. We envision a future where 
-                technology barriers no longer exist, and every business can thrive digitally.
+                {t('about.visionText')}
               </p>
               <motion.div
                 initial={{ width: 0 }}
@@ -419,7 +433,7 @@ function MissionVision() {
 }
 
 // --- CORE VALUES COMPONENT ---
-function CoreValues() {
+function CoreValues({ t }) {
   const values = [
     {
       icon: (
@@ -427,8 +441,8 @@ function CoreValues() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       ),
-      title: "Innovation First",
-      description: "We constantly push boundaries and embrace cutting-edge technologies to deliver tomorrow's solutions today."
+      title: t('about.value1Title'),
+      description: t('about.value1Desc')
     },
     {
       icon: (
@@ -436,8 +450,8 @@ function CoreValues() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      title: "Client Partnership",
-      description: "Your success is our success. We build lasting relationships based on trust, transparency, and results."
+      title: t('about.value2Title'),
+      description: t('about.value2Desc')
     },
     {
       icon: (
@@ -445,8 +459,8 @@ function CoreValues() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: "Excellence",
-      description: "We maintain the highest standards in every line of code, every design, and every interaction."
+      title: t('about.value3Title'),
+      description: t('about.value3Desc')
     },
     {
       icon: (
@@ -454,8 +468,8 @@ function CoreValues() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      title: "Integrity",
-      description: "We operate with honesty and ethical practices, always doing what's right for our clients and team."
+      title: t('about.value4Title'),
+      description: t('about.value4Desc')
     },
     {
       icon: (
@@ -463,8 +477,8 @@ function CoreValues() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
-      title: "Agility",
-      description: "We adapt quickly to changes, embrace challenges, and deliver solutions with speed and precision."
+      title: t('about.value5Title'),
+      description: t('about.value5Desc')
     },
     {
       icon: (
@@ -472,8 +486,8 @@ function CoreValues() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
-      title: "Continuous Learning",
-      description: "We invest in our team's growth and stay ahead of industry trends to serve you better."
+      title: t('about.value6Title'),
+      description: t('about.value6Desc')
     }
   ];
 
@@ -491,16 +505,16 @@ function CoreValues() {
             <span className="inline-flex items-center px-4 py-2 rounded-full 
                            bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 
                            text-sm font-semibold">
-              💎 What Drives Us
+              💎 {t('about.valuesBadge')}
             </span>
           </motion.div>
           
           <AnimatedSection variants={fadeInVariants}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-              Our Core Values
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 pb-2">
+              {t('about.valuesTitle')}
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              The principles that guide every decision and drive our success.
+              {t('about.valuesSubtitle')}
             </p>
           </AnimatedSection>
         </div>
@@ -510,7 +524,7 @@ function CoreValues() {
           variants={cardContainerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {values.map((value, index) => (
@@ -567,6 +581,7 @@ function CoreValues() {
 
 // --- MAIN PAGE COMPONENT ---
 function AboutPage() {
+  const { t, language } = useTranslation();
   const [team, setTeam] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -666,10 +681,10 @@ function AboutPage() {
                              group-hover:text-white transition-colors duration-300">
                   {member.name}
                 </h3>
-                {/* Team Member Role */}
+                {/* Team Member Role - NOW SUPPORTS TRANSLATIONS */}
                 <p className="text-blue-600 dark:text-blue-400 font-medium mt-1
                             group-hover:text-blue-100 transition-colors duration-300">
-                  {member.role}
+                  {getLocalizedText(member.role, language)}
                 </p>
                 
                 {/* Animated underline */}
@@ -690,10 +705,10 @@ function AboutPage() {
   return (
     <div className="relative overflow-hidden">
       <Helmet>
-        <title>About Us | Nexus Solutions</title>
+        <title>{t('about.title')} | Nexus Solutions</title>
         <meta 
           name="description" 
-          content="Meet the passionate team of developers, designers, and strategists at Nexus Solutions, dedicated to solving real-world problems." 
+          content={t('about.subtitle')}
         />
       </Helmet>
 
@@ -726,7 +741,7 @@ function AboutPage() {
           <AnimatedSection variants={fadeInVariants}>
             {/* Animated gradient text */}
             <motion.h1 
-              className="text-5xl md:text-7xl font-extrabold mb-6 
+              className="text-5xl md:text-7xl font-extrabold mb-8 pb-4
                          bg-clip-text text-transparent bg-gradient-to-r 
                          from-blue-600 via-purple-600 to-pink-600
                          dark:from-blue-400 dark:via-purple-400 dark:to-pink-400"
@@ -734,7 +749,7 @@ function AboutPage() {
               animate={{ backgroundPosition: "100% 50%" }}
               transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
             >
-              About Nexus Solutions
+              {t('about.title')}
             </motion.h1>
             
             <motion.p 
@@ -744,8 +759,7 @@ function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              We're a passionate team dedicated to building software
-              that solves real-world problems.
+              {t('about.subtitle')}
             </motion.p>
             
             {/* Animated scroll indicator */}
@@ -767,7 +781,7 @@ function AboutPage() {
         </div>
       </motion.div>
 
-      {/* 2. STATS SECTION - NEW! */}
+      {/* 2. STATS SECTION - FIXED! */}
       <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-10" />
         <div className="container mx-auto px-6 relative z-10">
@@ -775,14 +789,14 @@ function AboutPage() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-100px" }}
             variants={cardContainerVariants}
           >
             {[
-              { label: "Years Experience", value: 5, suffix: "+" },
-              { label: "Projects Completed", value: 150, suffix: "+" },
-              { label: "Happy Clients", value: 100, suffix: "+" },
-              { label: "Team Members", value: 25, suffix: "+" }
+              { label: t('about.statsYears'), value: 5, suffix: "+" },
+              { label: t('about.statsProjects'), value: 150, suffix: "+" },
+              { label: t('about.statsClients'), value: 100, suffix: "+" },
+              { label: t('about.statsTeam'), value: 25, suffix: "+" }
             ].map((stat, index) => (
               <motion.div 
                 key={stat.label}
@@ -845,8 +859,8 @@ function AboutPage() {
                   className="h-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"
                 />
                 
-                <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
-                  Our Story
+                <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white pb-4">
+                  {t('about.storyTitle')}
                 </h2>
                 
                 <motion.p 
@@ -855,8 +869,7 @@ function AboutPage() {
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.8 }}
                 >
-                  Founded in 2020, Nexus Solutions began with a simple idea: to
-                  make powerful technology accessible and simple for businesses of all sizes.
+                  {t('about.storyParagraph1')}
                 </motion.p>
                 
                 <motion.p 
@@ -865,10 +878,7 @@ function AboutPage() {
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
                 >
-                  We saw too many companies struggling with outdated, inefficient
-                  systems. We knew there was a better way. Today, we're a thriving team
-                  of developers, designers, and strategists who are passionate about
-                  building cutting-edge solutions that drive real growth and innovation.
+                  {t('about.storyParagraph2')}
                 </motion.p>
                 
                 {/* Feature highlights */}
@@ -885,7 +895,7 @@ function AboutPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                       ), 
-                      text: "Innovation First" 
+                      text: t('about.feature1')
                     },
                     { 
                       icon: (
@@ -893,7 +903,7 @@ function AboutPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>
                       ), 
-                      text: "Creative Solutions" 
+                      text: t('about.feature2')
                     },
                     { 
                       icon: (
@@ -901,7 +911,7 @@ function AboutPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                         </svg>
                       ), 
-                      text: "Goal Oriented" 
+                      text: t('about.feature3')
                     },
                     { 
                       icon: (
@@ -909,7 +919,7 @@ function AboutPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                       ), 
-                      text: "Client Focused" 
+                      text: t('about.feature4')
                     }
                   ].map((item, index) => (
                     <motion.div
@@ -939,13 +949,13 @@ function AboutPage() {
       </section>
 
       {/* 4. TIMELINE SECTION */}
-      <TimelineSection />
+      <TimelineSection t={t} />
 
       {/* 5. MISSION & VISION SECTION */}
-      <MissionVision />
+      <MissionVision t={t} />
 
       {/* 6. CORE VALUES SECTION */}
-      <CoreValues />
+      <CoreValues t={t} />
 
       {/* 7. MEET THE TEAM SECTION */}
       <section className="bg-gradient-to-b from-gray-50 to-white 
@@ -968,17 +978,17 @@ function AboutPage() {
               <span className="inline-flex items-center px-4 py-2 rounded-full 
                              bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 
                              text-sm font-semibold">
-                👥 Our Team
+                👥 {t('about.teamBadge')}
               </span>
             </motion.div>
             
             <AnimatedSection variants={fadeInVariants}>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
-                Meet Our Leadership
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 pb-2">
+                {t('about.teamTitle')}
               </h2>
               <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 
                           max-w-2xl mx-auto">
-                The dedicated minds behind our innovation.
+                {t('about.teamSubtitle')}
               </p>
             </AnimatedSection>
           </div>
@@ -1015,10 +1025,10 @@ function AboutPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
-              Ready to Work Together?
+              {t('about.ctaTitle')}
             </h2>
             <p className="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">
-              Let's build something amazing together. Get in touch with our team today.
+              {t('about.ctaSubtitle')}
             </p>
             <motion.div
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
@@ -1032,7 +1042,7 @@ function AboutPage() {
                          rounded-full shadow-2xl hover:bg-gray-50 
                          transition-all duration-300"
               >
-                Get Started
+                {t('about.ctaButton')}
               </HashLink>
             </motion.div>
           </motion.div>

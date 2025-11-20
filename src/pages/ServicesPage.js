@@ -328,7 +328,7 @@ function ServicesPage() {
               <span className="inline-flex items-center px-4 py-2 rounded-full 
                              bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 
                              text-sm font-semibold">
-                💼 Our Expertise
+                {t('servicesPage.expertiseBadge')}
               </span>
             </motion.div>
 
