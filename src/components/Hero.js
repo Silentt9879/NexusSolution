@@ -24,7 +24,7 @@ function Hero() {
   return (
     <div className="relative overflow-hidden
                     transition-colors duration-300 ease-in-out">
-      
+
       <video
         src={videoURL}
         autoPlay
@@ -33,7 +33,7 @@ function Hero() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
-      
+
       <div className="absolute inset-0 bg-black/60 dark:bg-black/70 z-10" />
 
       <motion.div
@@ -42,14 +42,16 @@ function Hero() {
         initial="hidden"
         animate="visible"
       >
-        
+
         <motion.h1
           className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
           variants={itemVariants}
         >
-          <TypeWriter 
+          <TypeWriter
             text={t('hero.title')}
             speed={40}
+            deleteSpeed={30}
+            delay={3000}    
             showCursor={true}
           />
         </motion.h1>
@@ -71,10 +73,10 @@ function Hero() {
                                           hover:bg-blue-700 transition duration-300">
             {t('hero.servicesButton')}
           </Link>
-          
-          <HashLink 
-            smooth 
-            to="/#services" 
+
+          <HashLink
+            smooth
+            to="/#services"
             className="bg-transparent text-white border border-white 
                        px-8 py-3 rounded-lg text-lg font-medium 
                        hover:bg-white hover:text-gray-900 transition duration-300"
