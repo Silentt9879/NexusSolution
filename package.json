@@ -2,7 +2,7 @@
   "name": "nexussolution",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Silentt9879.github.io/NexusSolution",
+  "homepage": "https://silentt9879.github.io/NexusSolution/",
   "dependencies": {
     "@formspree/react": "^3.0.0",
     "@portabletext/react": "^5.0.0",

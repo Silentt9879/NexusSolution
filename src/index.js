@@ -15,11 +15,11 @@ root.render(
     <ThemeProvider>
       <React.Suspense fallback="Loading...">
         <HelmetProvider>
-          <BrowserRouter basename="/NexusSolution">
+          <HashRouter basename="/NexusSolution">
             <LanguageProvider>
               <App />
             </LanguageProvider>
-          </BrowserRouter>
+          </HashRouter>
         </HelmetProvider>
       </React.Suspense>
     </ThemeProvider>
