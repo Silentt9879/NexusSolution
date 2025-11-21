@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/NexusSolution/static/css/main.5bf15265.css",
-    "main.js": "/NexusSolution/static/js/main.310383bc.js",
-    "static/js/708.7f0418df.chunk.js": "/NexusSolution/static/js/708.7f0418df.chunk.js",
+    "main.css": "/NexusSolution/static/css/main.9afc78cd.css",
+    "main.js": "/NexusSolution/static/js/main.1acb2b81.js",
+    "static/js/708.0134d579.chunk.js": "/NexusSolution/static/js/708.0134d579.chunk.js",
     "static/js/973.ddb1664d.chunk.js": "/NexusSolution/static/js/973.ddb1664d.chunk.js",
     "static/js/195.751cbadf.chunk.js": "/NexusSolution/static/js/195.751cbadf.chunk.js",
     "static/js/240.653d66a2.chunk.js": "/NexusSolution/static/js/240.653d66a2.chunk.js",
@@ -16,9 +16,9 @@
     "static/media/why-partner-image.jpg": "/NexusSolution/static/media/why-partner-image.bfbdd5a75bdd03a342b8.jpg",
     "service-worker.js": "/NexusSolution/service-worker.js",
     "index.html": "/NexusSolution/index.html",
-    "main.5bf15265.css.map": "/NexusSolution/static/css/main.5bf15265.css.map",
-    "main.310383bc.js.map": "/NexusSolution/static/js/main.310383bc.js.map",
-    "708.7f0418df.chunk.js.map": "/NexusSolution/static/js/708.7f0418df.chunk.js.map",
+    "main.9afc78cd.css.map": "/NexusSolution/static/css/main.9afc78cd.css.map",
+    "main.1acb2b81.js.map": "/NexusSolution/static/js/main.1acb2b81.js.map",
+    "708.0134d579.chunk.js.map": "/NexusSolution/static/js/708.0134d579.chunk.js.map",
     "973.ddb1664d.chunk.js.map": "/NexusSolution/static/js/973.ddb1664d.chunk.js.map",
     "195.751cbadf.chunk.js.map": "/NexusSolution/static/js/195.751cbadf.chunk.js.map",
     "240.653d66a2.chunk.js.map": "/NexusSolution/static/js/240.653d66a2.chunk.js.map",
@@ -31,7 +31,7 @@
     "446.3cff992d.chunk.js.map": "/NexusSolution/static/js/446.3cff992d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5bf15265.css",
-    "static/js/main.310383bc.js"
+    "static/css/main.9afc78cd.css",
+    "static/js/main.1acb2b81.js"
   ]
 }
