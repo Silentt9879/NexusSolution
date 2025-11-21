@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/NexusSolution/static/css/main.1d70acbf.css",
-    "main.js": "/NexusSolution/static/js/main.23f4e6e7.js",
-    "static/js/297.9e818d88.chunk.js": "/NexusSolution/static/js/297.9e818d88.chunk.js",
-    "static/js/973.88f42a69.chunk.js": "/NexusSolution/static/js/973.88f42a69.chunk.js",
-    "static/js/195.0e7a91d1.chunk.js": "/NexusSolution/static/js/195.0e7a91d1.chunk.js",
-    "static/js/240.84b9f18c.chunk.js": "/NexusSolution/static/js/240.84b9f18c.chunk.js",
-    "static/js/485.469b95dd.chunk.js": "/NexusSolution/static/js/485.469b95dd.chunk.js",
+    "main.css": "/NexusSolution/static/css/main.5bf15265.css",
+    "main.js": "/NexusSolution/static/js/main.5e6ce00f.js",
+    "static/js/708.7f0418df.chunk.js": "/NexusSolution/static/js/708.7f0418df.chunk.js",
+    "static/js/973.ddb1664d.chunk.js": "/NexusSolution/static/js/973.ddb1664d.chunk.js",
+    "static/js/195.751cbadf.chunk.js": "/NexusSolution/static/js/195.751cbadf.chunk.js",
+    "static/js/240.653d66a2.chunk.js": "/NexusSolution/static/js/240.653d66a2.chunk.js",
+    "static/js/485.bbbd57d7.chunk.js": "/NexusSolution/static/js/485.bbbd57d7.chunk.js",
     "static/js/38.e06a4ac2.chunk.js": "/NexusSolution/static/js/38.e06a4ac2.chunk.js",
     "static/js/796.59be20c9.chunk.js": "/NexusSolution/static/js/796.59be20c9.chunk.js",
     "static/js/165.5f7eb712.chunk.js": "/NexusSolution/static/js/165.5f7eb712.chunk.js",
@@ -16,13 +16,13 @@
     "static/media/why-partner-image.jpg": "/NexusSolution/static/media/why-partner-image.bfbdd5a75bdd03a342b8.jpg",
     "service-worker.js": "/NexusSolution/service-worker.js",
     "index.html": "/NexusSolution/index.html",
-    "main.1d70acbf.css.map": "/NexusSolution/static/css/main.1d70acbf.css.map",
-    "main.23f4e6e7.js.map": "/NexusSolution/static/js/main.23f4e6e7.js.map",
-    "297.9e818d88.chunk.js.map": "/NexusSolution/static/js/297.9e818d88.chunk.js.map",
-    "973.88f42a69.chunk.js.map": "/NexusSolution/static/js/973.88f42a69.chunk.js.map",
-    "195.0e7a91d1.chunk.js.map": "/NexusSolution/static/js/195.0e7a91d1.chunk.js.map",
-    "240.84b9f18c.chunk.js.map": "/NexusSolution/static/js/240.84b9f18c.chunk.js.map",
-    "485.469b95dd.chunk.js.map": "/NexusSolution/static/js/485.469b95dd.chunk.js.map",
+    "main.5bf15265.css.map": "/NexusSolution/static/css/main.5bf15265.css.map",
+    "main.5e6ce00f.js.map": "/NexusSolution/static/js/main.5e6ce00f.js.map",
+    "708.7f0418df.chunk.js.map": "/NexusSolution/static/js/708.7f0418df.chunk.js.map",
+    "973.ddb1664d.chunk.js.map": "/NexusSolution/static/js/973.ddb1664d.chunk.js.map",
+    "195.751cbadf.chunk.js.map": "/NexusSolution/static/js/195.751cbadf.chunk.js.map",
+    "240.653d66a2.chunk.js.map": "/NexusSolution/static/js/240.653d66a2.chunk.js.map",
+    "485.bbbd57d7.chunk.js.map": "/NexusSolution/static/js/485.bbbd57d7.chunk.js.map",
     "38.e06a4ac2.chunk.js.map": "/NexusSolution/static/js/38.e06a4ac2.chunk.js.map",
     "796.59be20c9.chunk.js.map": "/NexusSolution/static/js/796.59be20c9.chunk.js.map",
     "165.5f7eb712.chunk.js.map": "/NexusSolution/static/js/165.5f7eb712.chunk.js.map",
@@ -31,7 +31,7 @@
     "446.3cff992d.chunk.js.map": "/NexusSolution/static/js/446.3cff992d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d70acbf.css",
-    "static/js/main.23f4e6e7.js"
+    "static/css/main.5bf15265.css",
+    "static/js/main.5e6ce00f.js"
   ]
 }
