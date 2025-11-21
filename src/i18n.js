@@ -3,20 +3,26 @@ import { initReactI18next } from 'react-i18next';
 import HttpApi from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+// This helper checks if we are running on the live server (production) or localhost
+// If production, we add the repo name. If localhost, we don't.
+const loadPath = process.env.NODE_ENV === 'production'
+  ? '/NexusSolution/locales/{{lng}}/translation.json'
+  : '/locales/{{lng}}/translation.json';
+
 i18n
-  .use(HttpApi) // Loads translations from your /public folder
-  .use(LanguageDetector) // Detects user language (e.g., from browser settings)
-  .use(initReactI18next) // Passes i18n down to React
+  .use(HttpApi)
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
-    supportedLngs: ['en', 'es', 'fr', 'zh'], // English, Spanish, French, Chinese
+    supportedLngs: ['en', 'es', 'fr', 'zh'],
     fallbackLng: 'en',
     debug: false,
-    // Where to find the translation files
+
     backend: {
-      loadPath: '/NexusSolution/locales/{{lng}}/translation.json', 
-      // ^ NOTE: Since you use GitHub Pages with a repo name (NexusSolution), 
-      // we might need the repo prefix. If testing locally, use '/locales/{{lng}}/translation.json'
+      // 👇 USE THE VARIABLE WE MADE ABOVE
+      loadPath: loadPath,
     },
+
     detection: {
       order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
       caches: ['cookie'],

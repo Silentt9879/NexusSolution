@@ -1,7 +1,7 @@
 // src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async'; // 👈 1. IMPORT
 import { ThemeProvider } from './context/ThemeContext';
 import './index.css';
@@ -15,7 +15,7 @@ root.render(
     <ThemeProvider>
       <React.Suspense fallback="Loading...">
         <HelmetProvider>
-          <HashRouter basename="/NexusSolution">
+          <HashRouter>
             <LanguageProvider>
               <App />
             </LanguageProvider>
