@@ -11,6 +11,7 @@ import Services from '../components/Services';
 import WhyPartner from '../components/WhyPartner';
 import Contact from '../components/Contact';
 import Testimonials from '../components/Testimonials';
+import TypeWriter from '../components/TypeWriter'; // NEW: Import TypeWriter
 
 // --- ENHANCED ANIMATION VARIANTS ---
 const fadeInVariants = { 
@@ -106,7 +107,7 @@ function FloatingParticles() {
   );
 }
 
-// --- ENHANCED HERO WRAPPER ---
+// --- ENHANCED HERO WRAPPER WITH TYPING EFFECT ---
 function EnhancedHeroSection() {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);

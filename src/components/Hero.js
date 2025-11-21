@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { useTranslation } from '../contexts/LanguageContext';
+import TypeWriter from './TypeWriter';
+
 
 const videoURL = process.env.PUBLIC_URL + "/videos/stockvideo.mp4";
 
@@ -45,7 +47,11 @@ function Hero() {
           className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
           variants={itemVariants}
         >
-          {t('hero.title')}
+          <TypeWriter 
+            text={t('hero.title')}
+            speed={40}
+            showCursor={true}
+          />
         </motion.h1>
 
         <motion.p
