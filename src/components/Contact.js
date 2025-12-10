@@ -39,7 +39,7 @@ function AnimatedSection({ children, variants, className = "" }) {
 
 function Contact() {
   const { t } = useTranslation();
-  const [state, handleSubmit] = useForm("YOUR_FORM_ID"); // Replace with your Formspree ID
+  const [state, handleSubmit] = useForm("xblqjbnn"); // Replace with your Formspree ID
 
   if (state.succeeded) {
     return (
@@ -89,21 +89,6 @@ function Contact() {
           <p className="text-xl text-gray-600 dark:text-blue-200 max-w-2xl mx-auto mb-8">
             {t('contact.successMessage')}
           </p>
-
-          <motion.div
-            whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block"
-          >
-            <Link
-              to="/"
-              className="inline-block px-10 py-4 bg-white text-blue-600 font-bold text-lg 
-             rounded-full shadow-2xl hover:bg-gray-50 
-             transition-all duration-300"
-            >
-              {t('contact.successButton')}
-            </Link>
-          </motion.div>
         </motion.div>
       </section>
     );
