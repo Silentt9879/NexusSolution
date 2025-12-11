@@ -1,143 +1,206 @@
 // src/components/Navbar.js
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from './ThemeToggle';
 import { useTranslation } from '../contexts/LanguageContext';
 
-// Simple Language Switcher Component (EN/MS only)
+// --- COMPONENTS ---
+
+// 1. Premium Language Switcher
 const LanguageSwitcher = () => {
   const { language, changeLanguage } = useTranslation();
-
   return (
     <button
       onClick={() => changeLanguage(language === 'en' ? 'ms' : 'en')}
-      className="flex items-center space-x-2 px-3 py-2 rounded-lg
-                 text-gray-600 hover:text-blue-600 hover:bg-blue-50
-                 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800
-                 font-medium focus:outline-none transition-colors duration-200"
-      title={language === 'en' ? 'Switch to Malay' : 'Tukar ke Bahasa Inggeris'}
+      className="relative flex items-center justify-center w-10 h-10 rounded-full 
+                 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 
+                 transition-colors"
     >
-      {/* Globe Icon */}
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"></circle>
-        <line x1="2" y1="12" x2="22" y2="12"></line>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-      </svg>
-      <span className="font-semibold">{language.toUpperCase()}</span>
+      <span className="font-bold text-xs tracking-wider">
+        {language.toUpperCase()}
+      </span>
     </button>
   );
 };
 
-function Navbar() {
-  const { t } = useTranslation();
+// 2. Desktop Nav Link with "Sliding Spotlight"
+const NavLinks = ({ t }) => {
+  const location = useLocation();
+  const [hoveredPath, setHoveredPath] = useState(location.pathname);
+
+  const links = [
+    { path: "/", label: t('navbar.home') },
+    { path: "/services", label: t('navbar.services') },
+    { path: "/about", label: t('navbar.about') },
+    { path: "/blog", label: t('navbar.blog') },
+    { path: "/#contact", label: t('navbar.contact'), isHash: true },
+  ];
 
   return (
-    <header className="bg-white shadow-sm relative dark:bg-gray-800
-                       border-b border-gray-100 dark:border-gray-700
-                       transition-colors duration-300 ease-in-out">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-       
-        <Link to="/" className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-          Nexus Solutions
-        </Link>
+    <div className="flex items-center gap-1 bg-gray-100/50 dark:bg-gray-800/50 p-1.5 rounded-full border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
+      {links.map((link) => {
+        const isActive = hoveredPath === link.path;
+        const LinkComponent = link.isHash ? HashLink : Link;
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">
-            {t('navbar.home')}
-          </Link>
-          <Link to="/services" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">
-            {t('navbar.services')}
-          </Link>
-          <Link to="/about" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">
-            {t('navbar.about')}
-          </Link>
-          <Link to="/blog" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">
-            {t('navbar.blog')}
-          </Link>
-
-          <HashLink smooth to="/#contact" className="text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 font-medium">
-            {t('navbar.contact')}
-          </HashLink>
-          <HashLink
-            smooth
-            to="/#contact"
-            className="bg-blue-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-blue-700 transition duration-300"
+        return (
+          <LinkComponent
+            key={link.path}
+            to={link.path}
+            smooth={link.isHash}
+            className={`relative px-5 py-2 text-sm font-semibold rounded-full transition-colors duration-200 z-10
+              ${isActive ? "text-gray-900 dark:text-white" : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"}`}
+            onMouseEnter={() => setHoveredPath(link.path)}
           >
-            {t('navbar.getStarted')}
-          </HashLink>
+            {/* The Magic Sliding Background */}
+            {isActive && (
+              <motion.div
+                layoutId="nav-pill"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                className="absolute inset-0 bg-white dark:bg-gray-700 rounded-full shadow-sm"
+                style={{ zIndex: -1 }}
+              />
+            )}
+            {link.label}
+          </LinkComponent>
+        );
+      })}
+    </div>
+  );
+};
 
-          <ThemeToggle />
-          <LanguageSwitcher />
-        </div>
+// 3. Main Navbar Component
+function Navbar() {
+  const { t } = useTranslation();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-        {/* Mobile Menu */}
-        <div className="md:hidden flex items-center">
-          <ThemeToggle />
-          
-          <div className="ml-3">
-            <LanguageSwitcher />
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300
+          ${scrolled
+            ? 'bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm py-3'
+            : 'bg-transparent py-5'
+          }`}
+      >
+        <nav className="container mx-auto px-6 flex justify-between items-center">
+
+          {/* --- LOGO SECTION --- */}
+          <Link to="/" className="flex items-center gap-3 group">
+            {/* Animated Logo Icon */}
+            <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+              {/* Glow effect behind the logo */}
+              <div className="absolute inset-0 bg-blue-500 rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+              <img
+                src="/favicon.ico"
+                alt="Nexus Logo"
+                className="relative w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Modern Gradient Text */}
+            <span className="text-2xl font-extrabold tracking-tight bg-clip-text text-transparent 
+                  bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 
+                  dark:from-blue-400 dark:via-purple-400 dark:to-blue-400
+                  bg-[length:200%_auto] hover:animate-pulse transition-all duration-300">
+              Nexus Solutions
+            </span>
+          </Link>
+
+          {/* --- DESKTOP CENTER LINKS --- */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
+            <NavLinks t={t} />
           </div>
 
-          <DropdownMenu.Root>
-            <DropdownMenu.Trigger asChild>
-              <button className="text-gray-800 dark:text-gray-200 text-3xl focus:outline-none ml-2">
-                ☰
-              </button>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content
-              className="
-                absolute right-0 mt-2 w-48 z-[9999]
-                bg-white shadow-md rounded-md
-                dark:bg-gray-800 dark:border-gray-700
-                border border-gray-200
-                data-[side=top]:animate-slideDownAndFade
-                data-[side=bottom]:animate-slideUpAndFade
-              "
-            >
-              <DropdownMenu.Item asChild>
-                <Link to="/" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
-                  {t('navbar.home')}
-                </Link>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item asChild>
-                <Link to="/services" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
-                  {t('navbar.services')}
-                </Link>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item asChild>
-                <Link to="/about" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
-                  {t('navbar.about')}
-                </Link>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item asChild>
-                <Link to="/blog" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
-                  {t('navbar.blog')}
-                </Link>
-              </DropdownMenu.Item>
-              <DropdownMenu.Item asChild>
-                <HashLink smooth to="/#contact" className="block px-6 py-3 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 cursor-pointer outline-none">
-                  {t('navbar.contact')}
-                </HashLink>
-              </DropdownMenu.Item>
-              <DropdownMenu.Separator className="h-px bg-gray-200 dark:bg-gray-600" />
-              <DropdownMenu.Item asChild>
-                <HashLink
-                  smooth
-                  to="/#contact"
-                  className="block px-6 py-4 bg-blue-600 text-white text-center font-medium
-                               hover:bg-blue-700 cursor-pointer outline-none"
+          {/* --- DESKTOP RIGHT ACTIONS --- */}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-1 border-r border-gray-200 dark:border-gray-700 pr-4 mr-1">
+              <ThemeToggle />
+              <LanguageSwitcher />
+            </div>
+
+            <HashLink smooth to="/#contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow"
+              >
+                {t('navbar.getStarted')}
+              </motion.button>
+            </HashLink>
+          </div>
+
+          {/* --- MOBILE HAMBURGER --- */}
+          <button
+            className="md:hidden relative z-50 p-2 text-gray-800 dark:text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <div className={`w-6 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : 'mb-1.5'}`} />
+            <div className={`w-6 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'mb-1.5'}`} />
+            <div className={`w-6 h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+          </button>
+        </nav>
+      </motion.header>
+
+      {/* --- MOBILE FULLSCREEN MENU --- */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ type: "spring", stiffness: 200, damping: 30 }}
+            className="fixed inset-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl flex flex-col justify-center items-center"
+          >
+            <div className="flex flex-col items-center gap-8 text-2xl font-bold text-gray-900 dark:text-white">
+              {[
+                { path: "/", label: t('navbar.home') },
+                { path: "/services", label: t('navbar.services') },
+                { path: "/about", label: t('navbar.about') },
+                { path: "/blog", label: t('navbar.blog') },
+                { path: "/#contact", label: t('navbar.contact') },
+              ].map((link, i) => (
+                <motion.div
+                  key={link.path}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.1 }}
                 >
-                  {t('navbar.getStarted')}
-                </HashLink>
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu.Root>
-        </div>
-      </nav>
-    </header>
+                  <Link
+                    to={link.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="flex items-center gap-6 mt-8"
+              >
+                <ThemeToggle />
+                <LanguageSwitcher />
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
